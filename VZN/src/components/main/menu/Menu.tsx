@@ -13,11 +13,11 @@ export const Menu = () => {
 						<ReactSVG src={taskIcon} />
 						<span>Задачи</span>
 					</li>
-					<li className={style.unActive}>
+					<li className={style.unactive}>
 						<ReactSVG src={settingsIcon} />
 						<span>Настройки</span>
 					</li>
-					<li className={style.unActive}>
+					<li className={style.unactive}>
 						<ReactSVG src={infoIcon} />
 						<span>О системе</span>
 					</li>

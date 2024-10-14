@@ -24,16 +24,16 @@
 	padding: 0.813rem;
 }
 
-.unActive svg{
+.unactive svg{
 	stroke: #a8a3ab;
 	/* fill: #a8a3ab; */
 }
 
-.unActive svg path{
+.unactive svg path{
 	stroke: #a8a3ab;
 	/* fill: #a8a3ab; */
 }
 
-.unActive span{
+.unactive span{
 	color: #D3D3D3;
 }
