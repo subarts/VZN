@@ -6,4 +6,5 @@ type HeaderProps = {
   isCloseIcon?: boolean
   isMoreDefaultIcon?: boolean
 }
+
 export type { HeaderProps }

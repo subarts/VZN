@@ -12,14 +12,14 @@ const Header: React.FC<HeaderProps> = ({
   isCloseIcon,
   isMoreDefaultIcon,
 }) => {
-  const headerStyles: Array<string | boolean | undefined> = [
+  const headerStyles: string = [
     styles.header,
     isBorder && styles.border,
     isBackgroundColor && styles.backgroundColor,
     isFilter && styles.filter__vzn,
-  ]
+  ].join(" ")
   return (
-    <header className={headerStyles.join(" ")}>
+    <header className={headerStyles}>
       <h1>
         {isCloseIcon && <ReactSVG src={closeIcon} className="icon__close" />}
         {title}
