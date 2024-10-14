@@ -16,6 +16,10 @@
   --text-second-color: #49454F;
   --text-thr-color: #FFFFFF;
   --accent-color: #7EBBED;
+  --text-button-color:  #FEF7FF;
+}
+body{
+  background-color: var( --background-main-color)
 }
 @font-face {
   font-family: "robotoMedium";
