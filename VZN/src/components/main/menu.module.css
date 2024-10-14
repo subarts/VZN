@@ -1,0 +1,39 @@
+.main {
+	background: #f2f2f2;
+	/*  потом уберу высоту */
+	height: 393px;
+	/* flex: 1 0 auto   */
+}
+
+.nav {
+	padding-top: .5rem;
+}
+
+.list li{
+	font-family: robotoReg;
+	font-size: .875rem;
+	letter-spacing: .04em;
+	color: var(--text-primary-color);
+	padding: .5rem .75rem;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.specialPaddings li{
+	padding: 0.813rem;
+}
+
+.unActive svg{
+	stroke: #a8a3ab;
+	/* fill: #a8a3ab; */
+}
+
+.unActive svg path{
+	stroke: #a8a3ab;
+	/* fill: #a8a3ab; */
+}
+
+.unActive span{
+	color: #D3D3D3;
+}

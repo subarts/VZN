@@ -1,3 +1,4 @@
+@import url('./reset');
 :root {
   --primary-color-400: #2D609B;
   --primary-color-500: #4680B0;
