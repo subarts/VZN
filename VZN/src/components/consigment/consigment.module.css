@@ -1,0 +1,42 @@
+
+.consigment__list{    
+  margin: 0 auto;
+  width: 81%;
+  height: 379px;/* убрать при добавлении на страницу */
+  border: 0.0625rem solid var(--outline-border-color);
+  border-radius: var(--border-4);
+  overflow: scroll;
+  background-color: var(--background-main-color);
+  color: var(--text-primary-color);
+}
+.consigment__item{
+  padding: 0.25rem;
+  border-bottom: 0.0625rem solid var(--outline-border-color);
+}
+.consigment__item__descript{
+  font-family: robotoMedium;
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 0.75rem;
+  letter-spacing: 0.01562rem;
+}
+
+.consigment__item:last-child {
+  border: none;
+}
+.consigment__item__descript>li>span{
+  font-family: robotoReg;
+  font-size: 0.625rem;
+  line-height: 0.75rem;
+  letter-spacing: 0.25px;
+}
+.consigment__item >h4{
+  font-family: robotoReg;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 0.75rem;
+  letter-spacing: 0.03125rem; 
+}
+.consigment__list::-webkit-scrollbar{
+  width: 0;
+}
