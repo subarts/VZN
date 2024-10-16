@@ -1,0 +1,59 @@
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.pagination li > svg {
+	width: 18px;
+	height: 18px;
+}
+
+.pagination li {
+	list-style: none;
+}
+
+.prevPage {
+	display: flex;
+	padding: .375rem;
+	border-radius: .25rem;
+}
+
+.nextPage {
+	display: flex;
+	padding: .375rem;
+	text-align: center;
+	border-radius: .25rem;
+}
+ 
+.pagination li > input[type='number'] {
+	border: 1px solid var(--outline-border-color);
+	/* width: 2.188rem; */
+	width: 6ch;
+	text-align: center;
+	padding: .313rem .875rem .313rem .875rem;
+	border-radius: 0.25rem;
+	margin-right: 0.25rem;
+	font-size: .875rem;
+	letter-spacing: 0.04em;
+	font-family: robotoReg;
+	color: var(--text-primary-color);
+}
+
+.pagination li > input[type='number'] {
+	border: 1px solid var(--outline-border-color);
+	/* width: 2.188rem; */
+	width: 6ch;
+	text-align: center;
+	padding: .313rem .875rem .313rem .875rem;
+	border-radius: 0.25rem;
+	margin-right: 0.25rem;
+	font-size: .875rem;
+	letter-spacing: 0.04em;
+	font-family: robotoReg;
+}
+
+.pagination li > input[type='number']::placeholder{
+	color: var(--text-primary-color);
+}
