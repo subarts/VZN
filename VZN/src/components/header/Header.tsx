@@ -16,16 +16,16 @@ const Header: React.FC<HeaderProps> = ({
     styles.header,
     isBorder && styles.border,
     isBackgroundColor && styles.backgroundColor,
-    isFilter && styles.filter__vzn,
+    isFilter && styles.filterVzn,
   ].join(" ")
   return (
     <header className={headerStyles}>
       <h1>
-        {isCloseIcon && <ReactSVG src={closeIcon} className="icon__close" />}
+        {isCloseIcon && <ReactSVG src={closeIcon} className="iconClose" />}
         {title}
       </h1>
       {isMoreDefaultIcon && (
-        <ReactSVG src={moreDefaultIcon} className="icon__moreDefault" />
+        <ReactSVG src={moreDefaultIcon} className="iconMoreDefault" />
       )}
     </header>
   )

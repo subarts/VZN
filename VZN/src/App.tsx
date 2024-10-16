@@ -1,9 +1,11 @@
 import "./App.css"
-import './reset.css'
+import "./reset.css"
+import Home from "./pages/Home"
 
-export default function App() {
-  return(
+function App() {
+  return (
     <>
+      <Home />
     </>
   )
 }
