@@ -16,13 +16,19 @@
   --text-primary-color:#333333;
   --text-second-color: #49454F;
   --text-thr-color: #FFFFFF;
+  --text-disabled-color:#A8A3AB;
   --accent-color: #7EBBED;
   --text-button-color:  #FEF7FF;
   --border-4:0.25rem;
 }
 body{
-  background-color: var( --background-main-color)
+  background-color: var( --background-main-color);
+  border: 1px solid var( --text-primary-color);
 }
+a:hover{
+  background-color: var(--accent-color);
+}
+
 @font-face {
   font-family: "robotoMedium";
   src: url(./assets/fonts/roboto/Roboto-Medium.ttf);
