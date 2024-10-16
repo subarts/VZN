@@ -1,6 +1,6 @@
 
 .consigmentList{    
-  margin: 0 auto;
+  margin: 0.25rem auto;
   width: 81%;
   height: 379px;/* убрать при добавлении на страницу */
   border: 0.0625rem solid var(--outline-border-color);

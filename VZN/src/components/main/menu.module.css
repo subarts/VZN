@@ -1,15 +1,13 @@
 .main {
 	background: #f2f2f2;
-	/*  потом уберу высоту */
-	height: 393px;
-	/* flex: 1 0 auto   */
+	min-height: 24.5625rem;
 }
 
 .nav {
 	padding-top: .5rem;
 }
 
-.list li{
+.list li  a{
 	font-family: robotoReg;
 	font-size: .875rem;
 	letter-spacing: .04em;
@@ -17,23 +15,25 @@
 	padding: .5rem .75rem;
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: 0.75rem;
+	height: 2.5rem;
 }
 
-.specialPaddings li{
+.specialPaddings li {
 	padding: 0.813rem;
 }
-
 .unactive svg{
-	stroke: #a8a3ab;
-	/* fill: #a8a3ab; */
-}
-
+	stroke:var( --text-disabled-color); 
+} 
 .unactive svg path{
-	stroke: #a8a3ab;
-	/* fill: #a8a3ab; */
+	stroke:var( --text-disabled-color);
+}  
+.unactive a:hover{
+  background-color: var(--background-main-color);
 }
-
 .unactive span{
-	color: #D3D3D3;
+	color: var( --text-disabled-color);
+}
+.unactive a{
+	cursor: default;
 }
