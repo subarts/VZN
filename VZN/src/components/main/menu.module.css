@@ -1,6 +1,6 @@
 .main {
 	background: #f2f2f2;
-	min-height: 24.5625rem;
+	flex-grow: 1;
 }
 
 .nav {

@@ -21,9 +21,13 @@
   --text-button-color:  #FEF7FF;
   --border-4:0.25rem;
 }
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 body{
   background-color: var( --background-main-color);
-  border: 1px solid var( --text-primary-color);
 }
 a:hover{
   background-color: var(--accent-color);
