@@ -11,13 +11,13 @@ export const SettingsMenu = () => {
         <ul className={style.list}>
           <li className={style.unactive}>
             <Link to={""}>
-              <ReactSVG src={warehouseIcon} />
+              <ReactSVG src={warehouseIcon} className={style.warehouseIcon} />
               <span>Настройка 1</span>
             </Link>
           </li>
           <li className={style.unactive}>
             <Link to={""}>
-              <ReactSVG src={factoryIcon} />
+              <ReactSVG src={factoryIcon} className={style.factoryIcon} />
               <span>Настройка 2</span>
             </Link>
           </li>

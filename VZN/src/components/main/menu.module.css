@@ -10,7 +10,7 @@
 .list li  a{
 	font-family: robotoReg;
 	font-size: .875rem;
-	letter-spacing: .04em;
+	letter-spacing: .03125em;
 	color: var(--text-primary-color);
 	padding: .5rem .75rem;
 	display: flex;
@@ -19,18 +19,32 @@
 	height: 2.5rem;
 }
 
-.specialPaddings li {
+.specialPaddings li a{
 	padding: 0.813rem;
 }
-.unactive svg{
-	stroke:var( --text-disabled-color); 
-} 
-.unactive svg path{
-	stroke:var( --text-disabled-color);
-}  
+/* для неактивных иконок */
+.warehouseIcon path{
+	fill:var( --text-disabled-color) ;
+}
+.factoryIcon path{
+	fill:var( --text-disabled-color) ;
+}
+.settingsIcon path:first-of-type{
+	fill:var( --text-disabled-color) ;
+}
+.settingsIcon path:last-of-type{
+	stroke:var( --text-disabled-color) ;
+}
 .unactive a:hover{
   background-color: var(--background-main-color);
 }
+.infoIcon g path{
+	stroke:var( --text-disabled-color)  ;
+}
+ .infoIcon g path:last-of-type{
+	fill:var( --text-disabled-color)  ;
+	stroke: none;
+} 
 .unactive span{
 	color: var( --text-disabled-color);
 }

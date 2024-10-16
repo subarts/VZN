@@ -22,7 +22,8 @@
   --border-4:0.25rem;
 }
 body{
-  background-color: var( --background-main-color)
+  background-color: var( --background-main-color);
+  border: 1px solid var( --text-primary-color);
 }
 a:hover{
   background-color: var(--accent-color);

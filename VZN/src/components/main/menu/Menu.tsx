@@ -18,13 +18,13 @@ export const Menu = () => {
           </li>
           <li className={style.unactive}>
             <Link to={"settings"}>
-              <ReactSVG src={settingsIcon} />
+              <ReactSVG src={settingsIcon} className={style.settingsIcon} />
               <span>Настройки</span>
             </Link>
           </li>
           <li className={style.unactive}>
             <Link to={""}>
-              <ReactSVG src={infoIcon} />
+              <ReactSVG src={infoIcon} className={style.infoIcon} />
               <span>О системе</span>
             </Link>
           </li>

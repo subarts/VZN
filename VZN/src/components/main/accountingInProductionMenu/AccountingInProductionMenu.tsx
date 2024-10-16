@@ -28,7 +28,7 @@ export const AccountingInProductionMenu = () => {
           </li>
           <li>
             <Link to={""}>
-              <span>Цеховая наменклатура</span>
+              <span>Цеховая номенклатура</span>
             </Link>
           </li>
         </ul>

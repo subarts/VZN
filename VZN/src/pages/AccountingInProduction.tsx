@@ -5,7 +5,7 @@ const AccountingInProduction = () => {
   return (
     <>
       <Header
-        title={"Учет в производстве"}
+        title={"Учёт в производстве"}
         isBorder={true}
         isBackgroundColor={true}
       />

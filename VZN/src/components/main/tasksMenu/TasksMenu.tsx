@@ -10,13 +10,13 @@ export const TasksMenu = () => {
         <ul className={style.list}>
           <li className={style.unactive}>
             <Link to={""}>
-              <ReactSVG src={warehouseIcon} />
+              <ReactSVG src={warehouseIcon} className={style.warehouseIcon} />
               <span>Складской учет</span>
             </Link>
           </li>
           <li>
             <Link to={"AccountingInProduction"}>
-              <ReactSVG src={factoryIcon} className="unactive" />
+              <ReactSVG src={factoryIcon} />
               <span>Учет в производстве</span>
             </Link>
           </li>
