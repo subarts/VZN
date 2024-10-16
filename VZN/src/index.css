@@ -1,3 +1,4 @@
+@import url('./reset');
 :root {
   --primary-color-400: #2D609B;
   --primary-color-500: #4680B0;
@@ -16,6 +17,11 @@
   --text-second-color: #49454F;
   --text-thr-color: #FFFFFF;
   --accent-color: #7EBBED;
+  --text-button-color:  #FEF7FF;
+  --border-4:0.25rem;
+}
+body{
+  background-color: var( --background-main-color)
 }
 @font-face {
   font-family: "robotoMedium";
