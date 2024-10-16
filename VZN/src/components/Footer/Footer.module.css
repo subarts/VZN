@@ -9,6 +9,7 @@
     background-color: var(--background-main-color);
     font-family: 'robotoMedium';
     font-size: 12px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .list{
