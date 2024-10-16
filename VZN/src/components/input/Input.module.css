@@ -1,0 +1,41 @@
+.inputContainer{
+    position: relative;
+    width: 304px;
+}
+
+.input{
+    height: 45px;
+    width: 304px; /*поменять потом на 100% */
+    padding-inline: 4px;
+    padding-block: 15px;
+    font-size: 15px;
+    color: #333333;
+    background-color: #F2F2F2;
+    border: 1px solid var(--outline-border-color);
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: 'robotoReg';
+}
+
+.iconButton{
+    position: absolute;
+    content: '';
+    height: 24px;
+    top: 50%;
+    aspect-ratio: 1;
+    right: 8px;
+    transform: translateY(-50%);
+    background: url('../../assets/icons/folderinput.svg') center/contain no-repeat;
+}
+
+.inputLabel{
+    position: absolute;
+    top: -7px;
+    left: 12px;
+    padding-inline: 4px;
+    background-color: var(--background-main-color);
+    color: var(--text-second-color);
+    font-size: 12px;
+    font-family: 'robotoReg';
+}
+  
