@@ -1,6 +1,4 @@
 .footer{
-    margin-inline: auto;
-    padding-inline: 2.3rem;
     padding-block: 0.3rem;
     width: 100%;
     height: 3.375rem;
@@ -15,9 +13,8 @@ a{
     color: var( --text-primary-color);
   }
 .list{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 ul{
@@ -30,4 +27,5 @@ ul{
     align-items: center;
     row-gap: 0.33em;
     cursor: pointer;
+    width: 100%;
 }
