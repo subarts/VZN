@@ -14,10 +14,10 @@ const Header: React.FC<HeaderProps> = ({ title, style }) => {
   return (
     <header className={headerStyles}>
       <h1>
-        {<ReactSVG src={closeIcon} className="iconClose" />}
+        {/* {<ReactSVG src={closeIcon} className="iconClose" />} */}
         {title}
       </h1>
-      {<ReactSVG src={moreDefaultIcon} className="iconMoreDefault" />}
+      {/*  {<ReactSVG src={moreDefaultIcon} className="iconMoreDefault" />} */}
     </header>
   )
 }
