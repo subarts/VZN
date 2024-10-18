@@ -1,11 +1,13 @@
 import "./App.css"
 import Input from "./components/input/Input"
 import './reset.css'
+import "./reset.css"
+import Home from "./pages/Home"
 
-export default function App() {
-  return(
+
+function App() {
+  return (
     <>
-    <Input legendText="Номер ВЗН*" required={true}/>
     </>
   )
 }
