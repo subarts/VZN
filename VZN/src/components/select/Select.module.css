@@ -1,0 +1,30 @@
+.selectFieldset{
+    width: 307px;
+    font-family: "robotoReg";
+    font-size:0.75rem ;
+    border-radius:  0.25rem;
+    border: 1px solid var(--outline-border-color);
+    padding-block-start: 0.35em;
+    padding-block-end: 0.9em;
+    padding-inline-start: 0.7em;
+    color: var(--text-primary-color);
+    margin-top: 20px;
+}
+
+.selectFilter{
+    background-color: var(--background-main-color);
+    width: 290px;
+    font-size: 15px;
+}
+
+.selectFilter:focus {
+    outline: none; /* Убирает стандартный контур */
+}
+
+select::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.selectLegend{
+    padding: 0px 0.375rem;
+}
