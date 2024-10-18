@@ -1,9 +1,13 @@
 import "./App.css"
-import Footer from "./components/Footer/Footer"
-import './reset.css'
+import "./reset.css"
+import "./reset.css"
+import Auth from "./pages/Auth"
 
 function App() {
-  
+  return (
+    <>
+      <Auth />
+    </>
+  )
 }
-
 export default App
