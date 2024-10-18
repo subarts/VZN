@@ -1,5 +1,4 @@
 import styles from "./consigment.module.css"
-/* import { ConsigmentProps } from "../../types" */
 type ConsigmentProps = {
   vzn: string
   sender: string

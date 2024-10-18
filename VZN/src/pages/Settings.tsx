@@ -3,9 +3,13 @@ import Header from "../components/header/Header"
 import { SettingsMenu } from "../components/main/settingsMenu/SettingsMenu"
 
 const Settings = () => {
+  const headerProps = {
+    title: "Настройки",
+    style: ["header", "border", "backgroundColor"],
+  }
   return (
     <>
-      <Header title={"Настройки"} isBorder={true} isBackgroundColor={true} />
+      <Header {...headerProps} />
       <SettingsMenu />
       <Footer />
     </>
