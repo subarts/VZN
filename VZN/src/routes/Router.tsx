@@ -16,15 +16,15 @@ export const Router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "settings",
+    path: "menu/settings",
     element: <Settings />,
   },
   {
-    path: "tasks",
+    path: "/menu/tasks",
     element: <Tasks />,
   },
   {
-    path: "tasks/AccountingInProduction",
+    path: "menu/tasks/AccountingInProduction",
     element: <AccountingInProduction />,
   },
 ])
