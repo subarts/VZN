@@ -1,0 +1,38 @@
+.bottomSheet {
+  background: var(--background-modal-color);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: 1px solid var(--outline-border-color);
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+	transform: translateY(100%);
+  transition: height 0.2s linear;
+	z-index: 999;
+}
+
+.visible {
+	transform: translateY(0);
+	transition: transform 0.5s linear, height 0.2s linear;
+}
+
+.hidden {
+	transform: translateY(100%); 
+  transition: transform 0.3s linear, height 0.3s linear;
+}
+
+.handleHeader {
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.handle {
+  background: var(--outline-border-color);
+  height: 4px;
+  width: 40px;
+  border-radius: 4px;
+  margin-inline: auto;
+}
+
+
