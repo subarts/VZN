@@ -1,11 +1,10 @@
 import styles from '../input/Input.module.css'
 
-export default function Input({placeHolder='', labelText= '', hasIcon = false,  ...props}){
+export default function Input({placeHolder ='', legendText = '', required = false,  ...props}){
     return(
-        <div className={styles.inputContainer}>
-            <label className={styles.inputLabel}>{labelText}</label>
-            <input className={styles.input} type="text" placeholder={placeHolder} {...props}/>
-            {hasIcon && <button className={styles.iconButton} type="button"></button>}
-        </div>
+        <fieldset className={styles.inputContainer}>
+            <legend className={styles.inputLabel}>{legendText}</legend>
+            <input className={styles.inputFilter} type="text" placeholder={placeHolder} {...props}/>
+        </fieldset>
     )
 }
