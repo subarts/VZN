@@ -1,6 +1,4 @@
-.inputContainer{
-    width: 296px;
-}
+
 
 fieldset{
     font-family: "robotoReg";
@@ -20,10 +18,7 @@ fieldset{
     width: 296px;
     padding-inline-end: 0.35em;
     font-size: 15px;
-}
-
-input::-webkit-calendar-picker-indicator {
-    display: none;
+    width: 100%;
 }
 
 fieldset legend{
@@ -31,7 +26,3 @@ fieldset legend{
 }
 
 
-.inputLegend{
-    display: flex;
-
-}

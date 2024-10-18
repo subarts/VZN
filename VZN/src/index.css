@@ -42,8 +42,3 @@ a:hover{
   src: url(./assets/fonts/roboto/Roboto-Regular.ttf);
 }
 
-.Title{
-  padding: 0 24px;
-  display: flex;
-  gap: 10px;
-}
