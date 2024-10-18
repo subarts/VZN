@@ -9,4 +9,11 @@
   flex-direction: column;
   justify-content: center;
   gap: 8px;
+
+}
+h1{
+  font-size: 14px;
+  font-family: "robotoReg";
+   line-height: 1rem;
+   letter-spacing: 0.5px;
 }
