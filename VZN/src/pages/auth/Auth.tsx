@@ -1,6 +1,7 @@
 import Footer from "../../components/footer/Footer"
 import logo from "../../assets/logo/Frame (5).svg"
 import Input from "../../components/input/Input"
+import Button from "../../components/button/Button"
 import style from "./Auth.module.css"
 import { useState } from "react"
 import { authorization } from "../../api/authorization"
@@ -37,7 +38,7 @@ const Auth = () => {
               setLogInform({ ...logInform, password: e.target.value })
             }
           />
-          <button type="submit"> button</button>
+          <Button type="submit" size="Regular" color="Blue">Войти</Button>
         </form>
       </main>
       <Footer />
