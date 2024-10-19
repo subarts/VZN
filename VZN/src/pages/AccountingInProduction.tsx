@@ -1,14 +1,14 @@
 import Footer from "../components/footer/Footer"
-import Header from "../components/header/Header"
+import { Header } from "../components/header/Header"
 import { AccountingInProductionMenu } from "../components/main/accountingInProductionMenu/AccountingInProductionMenu"
 const AccountingInProduction = () => {
-  const headerProps = {
-    title: "Учет в производстве",
-    style: ["header", "border", "backgroundColor"],
+  const headerProps = { style: ["border", "backgroundColor"] }
+  function headerRenderProps() {
+    return <h1>Меню</h1>
   }
   return (
     <>
-      <Header {...headerProps} />
+      <Header render={() => headerRenderProps()} headerProps={headerProps} />
       <AccountingInProductionMenu />
       <Footer />
     </>

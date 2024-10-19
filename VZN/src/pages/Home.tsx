@@ -1,17 +1,15 @@
-import Header from "../components/header/Header"
 import { Menu } from "../components/main/menu/Menu"
 import Footer from "../components/footer/Footer"
-import { DateOfAcceptance } from "../components/dateOfAcceptance/DateOfAcceptance"
+import { Header } from "../components/header/Header"
 
 const Home = () => {
-  const headerProps = {
-    title: "Меню",
-    style: ["header", "border", "backgroundColor"],
+  const headerProps = { style: ["border", "backgroundColor"] }
+  function headerRenderProps() {
+    return <h1>Меню</h1>
   }
-
   return (
     <>
-      <Header {...headerProps} />
+      <Header render={() => headerRenderProps()} headerProps={headerProps} />
       <Menu />
 
       <Footer />
