@@ -6,11 +6,12 @@ import style from './pagination.module.css'
 
 interface IPaginationProps {
 	lastPage: number
+	setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+	currentPage: number
 }
 
-export const Pagination: FC<IPaginationProps> = ({ lastPage }) => {
-	const [currentPage, setCurrentPage] = React.useState<number>(1)
-
+export const Pagination: FC<IPaginationProps> = ({ lastPage, setCurrentPage, currentPage }) => {
+	
 	function handlePageChange(e: React.ChangeEvent<HTMLInputElement>) {
 		if(+e.target.value <= lastPage && +e.target.value !== 0)
 			setCurrentPage(+e.target.value)
