@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import style from "../menu.module.css"
 
-export const AccountingInProductionMenu = () => {
+export const AccountingInProductionMenu: React.FC = () => {
   return (
     <main className={style.main}>
       <nav className={style.nav}>
@@ -12,12 +12,12 @@ export const AccountingInProductionMenu = () => {
             </Link>
           </li>
           <li>
-            <Link to={""}>
+            <Link to={"/ListReceipt"}>
               <span>Внутризаводские накладные (Приход)</span>
             </Link>
           </li>
           <li>
-            <Link to={""}>
+            <Link to={"/ListConsignment"}>
               <span>Внутризаводские накладные (Расход)</span>
             </Link>
           </li>

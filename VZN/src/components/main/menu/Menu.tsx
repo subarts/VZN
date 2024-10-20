@@ -1,10 +1,8 @@
-import { ReactSVG } from "react-svg"
 import { Link } from "react-router-dom"
 import style from "../menu.module.css"
-import taskIcon from "../../../assets/icons/tasksActive.svg"
-import settingsIcon from "../../../assets/icons/settings.svg"
-import infoIcon from "../../../assets/icons/infoDefault.svg"
-
+import SettingIcon from "../../icons/SettingIcon"
+import InfoIcon from "../../icons/InfoIcon"
+import TasksIcon from "../../icons/TasksIcon"
 export const Menu = () => {
   return (
     <main className={style.main}>
@@ -12,19 +10,19 @@ export const Menu = () => {
         <ul className={style.list}>
           <li>
             <Link to={"tasks"}>
-              <ReactSVG src={taskIcon} />
+              <TasksIcon className={""} />
               <span>Задачи</span>
             </Link>
           </li>
           <li className={style.unactive}>
             <Link to={"settings"}>
-              <ReactSVG src={settingsIcon} className={style.settingsIcon} />
+              <SettingIcon className={"settingsIconDis"} />
               <span>Настройки</span>
             </Link>
           </li>
           <li className={style.unactive}>
             <Link to={""}>
-              <ReactSVG src={infoIcon} className={style.infoIcon} />
+              <InfoIcon className={"infoIconDis"} />
               <span>О системе</span>
             </Link>
           </li>

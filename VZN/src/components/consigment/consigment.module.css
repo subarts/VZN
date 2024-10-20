@@ -1,13 +1,16 @@
 
 .consigmentList{    
-  margin: 0.25rem auto;
-  width: 81%;
-  height: 379px;/* убрать при добавлении на страницу */
+  margin: 0.25rem 0.5rem;
+  flex-grow: 1;
   border: 0.0625rem solid var(--outline-border-color);
   border-radius: var(--border-4);
   overflow: scroll;
   background-color: var(--background-main-color);
   color: var(--text-primary-color);
+/* мб не придется вотдельный класс выделять */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .consigmentItem{
   padding: 0.25rem;
