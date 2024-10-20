@@ -5,6 +5,8 @@ import Tasks from "../pages/Tasks.tsx"
 import AccountingInProduction from "../pages/AccountingInProduction.tsx"
 import Home from "../pages/Home.tsx"
 import CatalogVzn from "../pages/CatalogVzn.tsx"
+import { InfoAboutVZN } from '../pages/InfoAboutVZN.tsx'
+
 
 export const Router = createBrowserRouter([
   {
@@ -34,5 +36,9 @@ export const Router = createBrowserRouter([
   {
     path: "/ListConsignment",
     element: <CatalogVzn />,
+  },
+  {
+    path: "/InfoAboutVZN",
+    element: <InfoAboutVZN />,
   },
 ])
