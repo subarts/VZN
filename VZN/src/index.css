@@ -24,13 +24,23 @@
 #root{
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 body{
   background-color: var( --background-main-color);
 }
 a:hover{
   background-color: var(--accent-color);
+}
+.smallButtonText{
+  font-size: 10px;
+  font-family: "robotoMedium";
+  display: flex;
+  gap: 3px;
+}
+.listButtons{
+  display: flex;
+  gap: 4px;
 }
 
 @font-face {

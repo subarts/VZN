@@ -5,7 +5,7 @@ import { THeaderStyle } from "../types"
 const AccountingInProduction = () => {
   const headerProps: THeaderStyle = { style: ["border", "backgroundColor"] }
   function headerRenderProps(): React.ReactNode {
-    return <h1>Меню</h1>
+    return <h1>Учет в производстве</h1>
   }
   return (
     <>

@@ -8,7 +8,7 @@ type THeaderProps = {
 export const Header: React.FC<THeaderProps> = ({ render, headerProps }) => {
   const headerStyles = Array.isArray(headerProps?.style)
     ? headerProps?.style?.map((el: string) => styles[el]).join(" ")
-    : ""
+    : headerProps
   return (
     <header className={styles.header + " " + headerStyles}>{render()}</header>
   )

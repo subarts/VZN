@@ -1,8 +1,7 @@
-import { ReactSVG } from "react-svg"
 import style from "../menu.module.css"
-import factoryIcon from "../../../assets/icons/factory.svg"
-import warehouseIcon from "../../../assets/icons/warehouse.svg"
 import { Link } from "react-router-dom"
+import WarehouseIcon from "../../icons/WarehouseIcon"
+import FactoryIcon from "../../icons/FactoryIcon"
 export const TasksMenu = () => {
   return (
     <main className={style.main}>
@@ -10,13 +9,13 @@ export const TasksMenu = () => {
         <ul className={style.list}>
           <li className={style.unactive}>
             <Link to={""}>
-              <ReactSVG src={warehouseIcon} className={style.warehouseIcon} />
+              <WarehouseIcon className={"warehouseIconDis"} />
               <span>Складской учет</span>
             </Link>
           </li>
           <li>
             <Link to={"AccountingInProduction"}>
-              <ReactSVG src={factoryIcon} />
+              <FactoryIcon className={""} />
               <span>Учет в производстве</span>
             </Link>
           </li>

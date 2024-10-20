@@ -6,7 +6,6 @@ import style from "./Auth.module.css"
 import { useState } from "react"
 import { Authorization } from "../../api/Authorization"
 import { LogPass } from "../../types"
-
 const Auth = () => {
   const [logInform, setLogInform] = useState<LogPass>({
     login: "",

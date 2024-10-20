@@ -5,6 +5,7 @@
   cursor: pointer;
   background: none;
   width: 100%;
+  
 }
 
 .button:hover {
@@ -33,7 +34,7 @@
 }
 
 .buttonSmallSize {
-  padding: 4px 8px;
+  padding: 2px 12px;
   max-width: fit-content;
 }
 
@@ -42,7 +43,7 @@
 }
 
 .buttonBlue {
-  border: 1px solid var(--primary-color-400);
+/*   border: 1px solid var(--primary-color-400); */
   background: var(--primary-color-400);
   color: var(--background-main-color);
 }

@@ -4,8 +4,8 @@ import Settings from "../pages/Settings.tsx"
 import Tasks from "../pages/Tasks.tsx"
 import AccountingInProduction from "../pages/AccountingInProduction.tsx"
 import Home from "../pages/Home.tsx"
+import CatalogVzn from "../pages/CatalogVzn.tsx"
 
-/* Будет делиться еще на роуты  */
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -26,5 +26,13 @@ export const Router = createBrowserRouter([
   {
     path: "menu/tasks/AccountingInProduction",
     element: <AccountingInProduction />,
+  },
+  {
+    path: "/ListReceipt",
+    element: <CatalogVzn />,
+  },
+  {
+    path: "/ListConsignment",
+    element: <CatalogVzn />,
   },
 ])

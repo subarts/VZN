@@ -1,3 +1,5 @@
+import { SVGProps } from "react"
+
 export type LogPass = {
   login: string
   password: string

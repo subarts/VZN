@@ -5,7 +5,7 @@ import { THeaderStyle } from "../types"
 const Tasks = () => {
   const headerProps: THeaderStyle = { style: ["border", "backgroundColor"] }
   function headerRenderProps(): React.ReactNode {
-    return <h1>Меню</h1>
+    return <h1>Задачи</h1>
   }
   return (
     <>

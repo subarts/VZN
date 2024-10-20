@@ -12,12 +12,12 @@ export const AccountingInProductionMenu: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link to={""}>
+            <Link to={"/ListReceipt"}>
               <span>Внутризаводские накладные (Приход)</span>
             </Link>
           </li>
           <li>
-            <Link to={""}>
+            <Link to={"/ListConsignment"}>
               <span>Внутризаводские накладные (Расход)</span>
             </Link>
           </li>
