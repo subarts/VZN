@@ -1,9 +1,8 @@
 .header{
-  height: 2.0625rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 0.5rem;
+  padding:  0.5rem;
   gap: 0.625rem;
 }
 .border{
@@ -20,7 +19,14 @@
   display: flex;
   align-items: center;
   gap: 0.375rem;
+  justify-content: space-between;
+  width: 100%;
+  letter-spacing: 0;
 }
+.justifyStartH1 h1{
+  justify-content: flex-start;
+}
+
 .filterVzn{
   height: 2.375rem;
 }
