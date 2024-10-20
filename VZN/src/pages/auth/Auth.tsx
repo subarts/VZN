@@ -4,7 +4,7 @@ import Input from "../../components/input/Input"
 import Button from "../../components/button/Button"
 import style from "./Auth.module.css"
 import { useState } from "react"
-import { authorization } from "../../api/authorization"
+import { Authorization } from "../../api/Authorization"
 import { LogPass } from "../../types"
 
 const Auth = () => {
@@ -14,7 +14,7 @@ const Auth = () => {
   })
   function getAuthToken(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    authorization(logInform)
+    Authorization(logInform)
   }
 
   return (

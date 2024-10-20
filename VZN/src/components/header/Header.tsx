@@ -1,10 +1,11 @@
 import React from "react"
 import styles from "./header.module.css"
-type THeaderStyle = {
+import { THeaderStyle } from "../../types"
+type THeaderProps = {
   render: () => React.ReactNode
-  headerProps?: { style: Array<string> | string | undefined }
+  headerProps?: THeaderStyle
 }
-export const Header: React.FC<THeaderStyle> = ({ render, headerProps }) => {
+export const Header: React.FC<THeaderProps> = ({ render, headerProps }) => {
   const headerStyles = Array.isArray(headerProps?.style)
     ? headerProps?.style?.map((el: string) => styles[el]).join(" ")
     : ""

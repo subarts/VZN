@@ -1,10 +1,10 @@
 import Footer from "../components/footer/Footer"
 import { Header } from "../components/header/Header"
 import { SettingsMenu } from "../components/main/settingsMenu/SettingsMenu"
-
-const Settings = () => {
-  const headerProps = { style: ["border", "backgroundColor"] }
-  function headerRenderProps() {
+import { THeaderStyle } from "../types"
+const Settings: React.FC = () => {
+  const headerProps: THeaderStyle = { style: ["border", "backgroundColor"] }
+  function headerRenderProps(): React.ReactNode {
     return <h1>Меню</h1>
   }
   return (
