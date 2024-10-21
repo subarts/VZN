@@ -14,9 +14,11 @@ type TVisibleModal = "create" | "search"
 
 const CatalogVzn = () => {
   const [visibleModalType, setVisibleModalType] = useState<TVisibleModal | "">(
-    ""
+    "search"
   )
 
+  const isConsignment =
+    window.location.pathname === "/ListConsignment" /* флаг на расход приход */
   const headerProps: THeaderStyle = visibleModalType
     ? { style: ["border", "justifyStartH1"] }
     : { style: "" }
@@ -24,7 +26,7 @@ const CatalogVzn = () => {
   function headerRenderProps(): React.ReactNode {
     return !visibleModalType ? (
       <h1>
-        ВЗН УП (Расход)
+        ВЗН УП ({isConsignment ? "Расход" : "Приход"})
         <div className="listButtons">
           <Button
             onClick={() => setVisibleModalType("search")}
@@ -36,17 +38,18 @@ const CatalogVzn = () => {
               Поиск
             </>
           </Button>
-
-          <Button
-            onClick={() => setVisibleModalType("create")}
-            size={"Small"}
-            className={"smallButtonText"}
-          >
-            <>
-              <PLusIcon />
-              Создать
-            </>
-          </Button>
+          {isConsignment && (
+            <Button
+              onClick={() => setVisibleModalType("create")}
+              size={"Small"}
+              className={"smallButtonText"}
+            >
+              <>
+                <PLusIcon />
+                Создать
+              </>
+            </Button>
+          )}
         </div>
       </h1>
     ) : (

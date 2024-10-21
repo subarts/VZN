@@ -6,7 +6,7 @@ import AccountingInProduction from "../pages/AccountingInProduction.tsx"
 import Home from "../pages/Home.tsx"
 import ModalViewingTheComposition from "../components/modalViewingTheComposition/ModalViewingTheComposition.tsx"
 import CatalogVzn from "../pages/CatalogVzn.tsx"
-import { InfoAboutVZN } from '../pages/InfoAboutVZN.tsx'
+import { InfoAboutVZN } from "../pages/InfoAboutVZN.tsx"
 import ModalScan from "../components/modalScan/ModalScan.tsx"
 
 export const Router = createBrowserRouter([
@@ -32,11 +32,11 @@ export const Router = createBrowserRouter([
   },
   {
     path: "menu/ModalViewingTheComposition",
-    element: <ModalViewingTheComposition />
+    element: <ModalViewingTheComposition />,
   },
   {
-    path: "menu/ModalScan",
-    element: <ModalScan />
+    path: "/menu/modalScan",
+    element: <ModalScan />,
   },
   {
     path: "/ListReceipt",
@@ -50,5 +50,4 @@ export const Router = createBrowserRouter([
     path: "/InfoAboutVZN",
     element: <InfoAboutVZN />,
   },
-
 ])
