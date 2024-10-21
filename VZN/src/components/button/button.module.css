@@ -18,6 +18,7 @@
   background: var(--background-disabled-color);
   color: var(--text-disabled-color);
   cursor: pointer;
+  pointer-events: none;
 }
 
 .buttonRoundShape {

@@ -1,11 +1,11 @@
 import "./App.css"
 import "./reset.css"
-import Auth from "./pages/auth/Auth"
+import "./reset.css"
 
 function App() {
   return (
     <>
-      <Auth />
+      
     </>
   )
 }
