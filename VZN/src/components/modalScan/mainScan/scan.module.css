@@ -18,7 +18,7 @@
 
 .buttons{
     display: flex;
-    column-gap: .375rem;
+    column-gap: .376rem;
     justify-content: center;
     font-family: robotoReg;
     font-size: 0.875rem;
