@@ -1,5 +1,3 @@
-
-
 fieldset{
     font-family: "robotoReg";
     font-size:0.75rem ;
@@ -27,4 +25,9 @@ fieldset legend{
 }
 .inputDisabled{
     border: 1px solid var(--background-disabled-color);
+}
+
+.iconWrapper{
+    display: flex;
+    justify-content: space-between;
 }

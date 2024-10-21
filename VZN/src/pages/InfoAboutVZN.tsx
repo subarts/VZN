@@ -4,17 +4,19 @@ import { Header } from '../components/header/Header'
 import { AddVZN } from '../components/addVZN/AddVZN'
 import { AboutVZN } from '../components/InfoAboutVZN/AboutVZN'
 import { THeaderStyle } from '../types'
+import { useParams } from "react-router-dom"
 
 type TModalStep = 'first-step' | 'second-step'
 export const InfoAboutVZN = () => {
 	const [modalStep, setModalStep] = React.useState<TModalStep | ''>('')
-	const headerProps: THeaderStyle = !modalStep ? { style: [''] } : {style: ['border']}
+	const headerProps: THeaderStyle = !modalStep ? { style: [''] } : { style: ['border'] }
+	const { numberVzn } = useParams()
 
 	function headerRenderProps(): React.ReactNode {
-		if (!modalStep) return <h1>ВЗН №15(Расход)</h1>
+		if (!modalStep) return <h1>ВЗН №{numberVzn} (Расход)</h1>
 		return (
 			<div>
-				<h1>Элемент ВЗН №15</h1>
+				<h1>Элемент ВЗН №{numberVzn}</h1>
 				<p>{modalStep === 'first-step' ? 'Поиск карточки (Шаг 1)' : 'Поиск карточки (Шаг 2)'}</p>
 			</div>
 		)

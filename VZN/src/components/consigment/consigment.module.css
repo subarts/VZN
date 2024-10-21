@@ -7,14 +7,15 @@
   overflow: scroll;
   background-color: var(--background-main-color);
   color: var(--text-primary-color);
-/* мб не придется вотдельный класс выделять */
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  overflow: auto;
 }
 .consigmentItem{
   padding: 0.25rem;
   border-bottom: 0.0625rem solid var(--outline-border-color);
+  width: 100%;
 }
 .consigmentItemDescript{
   font-family: robotoMedium;
