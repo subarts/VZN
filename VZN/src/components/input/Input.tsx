@@ -9,8 +9,10 @@ export default function Input({
   ...props
 }) {
   return (
-    <fieldset className={`${styles.inputContainer} ${disabled ? styles.inputDisabled : ''}`}>
-      <legend className={`${disabled ? styles.legendDisabled : ''}`}>{legendText}</legend>
+    <fieldset className={` ${disabled ? styles.inputDisabled : ""}`}>
+      <legend className={`${disabled ? styles.legendDisabled : ""}`}>
+        {legendText}
+      </legend>
       <input
         className={styles.inputFilter}
         type={type}
