@@ -16,7 +16,7 @@ type TVisibleModal = "create" | "search"
 
 const CatalogVzn = () => {
   const [visibleModalType, setVisibleModalType] = useState<TVisibleModal | "">(
-    "search"
+    ""
   )
   /* начальное состояние добавлено тк без фильтров приходит массив на 9к+ элементов  */
 
@@ -31,9 +31,9 @@ const CatalogVzn = () => {
   const [listVzn, setListVzn] = useState<Array<TListVznPropsItem>>([])
   useEffect(() => {
     const requestVzn = async () => {
-      const result = await ConsignmentsVzn(bodyRequest)
+      // const result = await ConsignmentsVzn(bodyRequest)
 
-      setListVzn(result)
+      // setListVzn(result)
     }
     requestVzn()
   }, [])

@@ -9,7 +9,7 @@
 	display: flex;
 	justify-content: center;
 	gap: .625rem;
-	margin-top: 10px;
+	margin-top: .625rem;
 	font-weight: 500;
 	font-family: robotoReg;
 	font-size: .875rem;
@@ -17,7 +17,7 @@
 	text-align: center;
 }
 
-.btns button {
+.btns > button {
 	padding: .625rem 1.5rem;
 }
 

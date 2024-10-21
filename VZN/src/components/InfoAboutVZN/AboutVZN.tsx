@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Button from '../button/Button'
 import style from './aboutVZN.module.css'
 
-type TModalStep = 'first-step' | 'second-step'
+type TModalStep = 'first-step' | 'second-step' | 'infoCard' | 'infoCardEdit'
 interface IAboutVZN {
 	setModalStep: React.Dispatch<React.SetStateAction<"" | TModalStep>>
 }
@@ -21,9 +21,13 @@ export const AboutVZN: FC<IAboutVZN> = ({setModalStep}) => {
 					<Button size='Small' onClick={() => setModalStep('first-step')}>Создать</Button>
 				</div>
 
-				<div className={style.list}>
-					Cписок пуст...
-				</div>
+				<ul className={style.list}>
+					<li onClick={() => setModalStep('infoCardEdit')}>
+						<p>55102-8601047 -- Косынка с длинным названием 7510002</p>
+						<p>Выдано: </p>
+						<p>Принято: </p>
+					</li>
+				</ul>
 			</section>
 		</main>
 	);

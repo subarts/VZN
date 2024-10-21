@@ -1,0 +1,67 @@
+
+.main {
+	flex-grow: 1;
+	background: #f2f2f2;
+	padding-top: 3.53rem;
+}
+
+.main form {
+	padding: .375rem .5rem 0 .375rem;
+}
+
+.info {
+	font-family: robotoReg;
+	font-weight: 400;
+	font-size: .75rem;
+	letter-spacing: 0.04em;
+	color: var(--text-primary-color);
+}
+
+.bold {
+	font-weight: 500;
+	font-family: robotoMedium;
+}
+
+.btn > button {
+	font-size: .625rem;
+	letter-spacing: .01em;
+	font-weight: 500;
+	font-family: robotoReg;
+}
+
+.infoFields {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: 
+	'giving taking'
+	'number number';
+	margin-top: .25rem;
+	margin-bottom: .375rem;
+}
+
+.infoFields fieldset:first-child {
+	grid-area: giving;
+}
+
+.infoFields fieldset:first-child {
+	grid-area: giving;
+}
+
+.infoFields fieldset:nth-child(2) {
+	grid-area: taking;
+}
+
+.infoFields fieldset:last-child {
+	grid-area: number;
+}
+
+.btns {
+	display: flex;
+	justify-content: center;
+	gap: .625rem;
+	margin-top: .625rem;
+}
+
+.btns > button:nth-child(2) {
+	border: 1px solid var(--outline-border-color);
+}

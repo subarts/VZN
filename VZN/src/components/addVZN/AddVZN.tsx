@@ -1,8 +1,15 @@
+import { FC } from 'react'
 import Button from '../button/Button'
 import Input from '../input/Input'
 import style from './addVZN.module.css'
 
-export const AddVZN = () => {
+
+type TModalStep = 'first-step' | 'second-step' | 'infoCard' | 'infoCardEdit'
+interface IAddVZN {
+	setModalStep: React.Dispatch<React.SetStateAction<"" | TModalStep>>
+}
+
+export const AddVZN: FC<IAddVZN> = ({setModalStep}) => {
 	return (
 		<form className={style.form}>
 			<Input legendText='№ карточки' type='text' />
@@ -11,7 +18,7 @@ export const AddVZN = () => {
 			<Input legendText='Заводской код' type='text' />
 
 			<div className={style.btns}>
-				<Button>Поиск карточки</Button>
+				<Button onClick={() => setModalStep('second-step')}>Поиск карточки</Button>
 				<Button color='Transparent'>Отмена</Button>
 			</div>
 		</form>

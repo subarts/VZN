@@ -10,10 +10,10 @@ import { InfoAboutVZN } from "../pages/InfoAboutVZN.tsx"
 import ModalScan from "../components/modalScan/ModalScan.tsx"
 
 export const Router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
+  // {
+  //   path: "/",
+  //   element: <App />,
+  // },
   {
     path: "/menu",
     element: <Home />,
@@ -47,11 +47,17 @@ export const Router = createBrowserRouter([
     element: <CatalogVzn />,
   },
   {
-    path: "/ListConsignment/:numberVzn",
+    path: "/ListConsignment",
     element: <InfoAboutVZN />,
   },
   {
-    path: "/ListReceipt/:numberVzn",
+    path: "/ListReceipt",
+    element: <InfoAboutVZN />,
+  },
+
+  {
+    path: "/InfoAboutVZN",
     element: <InfoAboutVZN />,
   },
 ])
+
