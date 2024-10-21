@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <Link to="/">
+          <Link to="/menu">
             <ReactSVG src={menu} />
             <p className={styles.text}>Меню</p>
           </Link>

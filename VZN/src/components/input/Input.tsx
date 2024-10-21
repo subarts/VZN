@@ -1,10 +1,22 @@
-import styles from '../input/Input.module.css'
-
-export default function Input({placeHolder ='', legendText = '', required = false,  ...props}){
-    return(
-        <fieldset className={styles.inputFieldset}>
-            <legend className={styles.inputLegend}>{legendText}</legend>
-            <input className={styles.inputFilter} type="text" placeholder={placeHolder} {...props}/>
-        </fieldset>
-    )
+import styles from "../input/Input.module.css"
+export default function Input({
+  placeHolder = "",
+  legendText = "",
+  required = false,
+  type = "text",
+  className = "",
+  disabled = false,
+  ...props
+}) {
+  return (
+    <fieldset className={`${styles.inputContainer} ${disabled ? styles.inputDisabled : ''}`}>
+      <legend className={`${disabled ? styles.legendDisabled : ''}`}>{legendText}</legend>
+      <input
+        className={styles.inputFilter}
+        type={type}
+        placeholder={placeHolder}
+        {...props}
+      />
+    </fieldset>
+  )
 }

@@ -1,0 +1,67 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  width: 100%;
+}
+
+.button:hover {
+  background: var(--primary-color-500);
+  color: var(--background-main-color);
+}
+
+.button:disabled {
+  border: 1px solid var(--background-disabled-color);
+  background: var(--background-disabled-color);
+  color: var(--text-disabled-color);
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.buttonRoundShape {
+  border-radius: 32px;
+}
+
+.buttonSquareShape {
+  border-radius: 8px;
+}
+
+.buttonRegularSize {
+  padding: 8px 24px;
+  max-width: fit-content;
+}
+
+.buttonSmallSize {
+  padding: 4px 8px;
+  max-width: fit-content;
+}
+
+.buttonFullSize {
+  padding: 8px 24px;
+}
+
+.buttonBlue {
+  border: 1px solid var(--primary-color-400);
+  background: var(--primary-color-400);
+  color: var(--background-main-color);
+}
+
+.buttonLightBlue {
+  border: 1px solid var(--primary-color-500);
+  background: var(--primary-color-500);
+  color: var(--text-second-color);
+}
+
+.buttonTransparentWithBorder {
+  border: 1px solid var(--outline-border-color);
+  background: none;
+  color: var(--primary-color-400);
+}
+
+.buttonTransparent {
+  border: none;
+  background: none;
+  color: var(--primary-color-400);
+}

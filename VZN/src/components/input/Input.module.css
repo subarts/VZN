@@ -1,5 +1,4 @@
-.inputFieldset{
-    width: 296px;
+fieldset{
     font-family: "robotoReg";
     font-size:0.75rem ;
     border-radius:  0.25rem;
@@ -8,20 +7,27 @@
     padding-block-end: 0.625em;
     padding-inline-start: 0.7em;
     color: var(--text-primary-color);
+    max-width: 304px;
 }
 
 .inputFilter{
     background-color: var(--background-main-color);
     line-height: 150%;
+    max-width: 304px;
     width: 296px;
     padding-inline-end: 8px;
     font-size: 15px;
-}
-
-input::-webkit-calendar-picker-indicator {
-    display: none;
+    width: 100%;
 }
 
 legend{
     padding: 0px 0.375rem;
+}
+
+.legendDisabled{
+    color: var(--background-disabled-color);
+}
+
+.inputDisabled{
+    border: 1px solid var(--background-disabled-color);
 }
