@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Button from "../components/button/Button"
 import Consigment from "../components/consigment/Consigment"
 import Footer from "../components/footer/Footer"
@@ -9,14 +9,40 @@ import PLusIcon from "../components/icons/PlusIcon"
 import ModalFilterVzn from "../components/modalFilterVzn/ModalFilterVzn"
 import ModalCreateVZN from "../components/modalCreateVZN/ModalCreateVZN"
 import { THeaderStyle } from "../types"
-
+import { ConsignmentsVzn } from "../api/ConsignmentsVzn"
+import { TListVznPropsItem } from "../types"
 type TVisibleModal = "create" | "search"
 
 const CatalogVzn = () => {
   const [visibleModalType, setVisibleModalType] = useState<TVisibleModal | "">(
     "search"
   )
+  /* начальное состояние добавлено тк без фильтров приходит массив на 9к+ элементов  */
+  type TListRequest = {
+    Sender: string
+    Num: string
+    Receiver: string
+    StartArrivalMoveDate: ""
+    endArrivalMoveDate: ""
+  }
 
+  const [bodyRequest, setBodyRequest] = useState<TListRequest>({
+    Num: "5002567%",
+    Sender: "",
+    Receiver: "",
+    StartArrivalMoveDate: "",
+    endArrivalMoveDate: "",
+  })
+
+  const [listVzn, setListVzn] = useState<Array<TListVznPropsItem>>([])
+  useEffect(() => {
+    const requestVzn = async () => {
+      const result = await ConsignmentsVzn(bodyRequest)
+
+      setListVzn(result)
+    }
+    requestVzn()
+  }, [])
   const isConsignment =
     window.location.pathname === "/ListConsignment" /* флаг на расход приход */
   const headerProps: THeaderStyle = visibleModalType
@@ -70,7 +96,7 @@ const CatalogVzn = () => {
       ) : visibleModalType === "create" ? (
         <ModalCreateVZN />
       ) : (
-        <Consigment />
+        <Consigment listVzn={listVzn} />
       )}
 
       <Footer />

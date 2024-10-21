@@ -47,7 +47,11 @@ export const Router = createBrowserRouter([
     element: <CatalogVzn />,
   },
   {
-    path: "/InfoAboutVZN",
+    path: "/ListConsignment/:numberVzn",
+    element: <InfoAboutVZN />,
+  },
+  {
+    path: "/ListReceipt/:numberVzn",
     element: <InfoAboutVZN />,
   },
 ])
