@@ -14,7 +14,7 @@ type TVisibleModal = "create" | "search"
 
 const CatalogVzn = () => {
   const [visibleModalType, setVisibleModalType] = useState<TVisibleModal | "">(
-    ""
+    "search"
   )
 
   const isConsignment =
