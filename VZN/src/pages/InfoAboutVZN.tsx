@@ -1,21 +1,30 @@
-import React from 'react';
+import React from 'react'
+import Footer from '../components/footer/Footer'
 import { Header } from '../components/header/Header'
-import Footer from '../components/footer/Footer';
-import { AboutVZN} from '../components/InfoAboutVZN/AboutVZN';
-import { THeaderStyle } from '../types';
+import { AddVZN } from '../components/addVZN/AddVZN'
+import { AboutVZN } from '../components/InfoAboutVZN/AboutVZN'
+import { THeaderStyle } from '../types'
 
+type TModalStep = 'first-step' | 'second-step'
 export const InfoAboutVZN = () => {
-	const headerProps: THeaderStyle = { style: [''] }
+	const [modalStep, setModalStep] = React.useState<TModalStep | ''>('')
+	const headerProps: THeaderStyle = !modalStep ? { style: [''] } : {style: ['border']}
 
 	function headerRenderProps(): React.ReactNode {
-		return <h1>ВЗН №15 (Расход)</h1>
+		if (!modalStep) return <h1>ВЗН №15(Расход)</h1>
+		return (
+			<div>
+				<h1>Элемент ВЗН №15</h1>
+				<p>{modalStep === 'first-step' ? 'Поиск карточки (Шаг 1)' : 'Поиск карточки (Шаг 2)'}</p>
+			</div>
+		)
 	}
 
 	return (
 		<>
-			<Header render={() => headerRenderProps()} headerProps={headerProps}/>
-			<AboutVZN />
+			<Header render={() => headerRenderProps()} headerProps={headerProps} />
+			{!modalStep ? <AboutVZN setModalStep={setModalStep} /> : modalStep === 'first-step' ? <AddVZN /> : null}
 			<Footer />
 		</>
-	);
+	)
 }

@@ -1,7 +1,13 @@
+import { FC } from 'react'
 import Button from '../button/Button'
 import style from './aboutVZN.module.css'
 
-export const AboutVZN = () => {
+type TModalStep = 'first-step' | 'second-step'
+interface IAboutVZN {
+	setModalStep: React.Dispatch<React.SetStateAction<"" | TModalStep>>
+}
+
+export const AboutVZN: FC<IAboutVZN> = ({setModalStep}) => {
 	return (
 		<main className={style.main}>
 			<section className={style.info}>
@@ -12,7 +18,7 @@ export const AboutVZN = () => {
 			</section>
 			<section className={style.listSection}>
 				<div className={style.createBtn}>
-					<Button size='Small'>Создать</Button>
+					<Button size='Small' onClick={() => setModalStep('first-step')}>Создать</Button>
 				</div>
 
 				<div className={style.list}>

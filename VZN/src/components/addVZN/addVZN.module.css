@@ -1,0 +1,26 @@
+.form {
+	flex-grow: 1;
+	background: #f2f2f2;
+	padding-inline: .5rem;
+	padding-top: 3.09rem;
+}
+
+.btns {
+	display: flex;
+	justify-content: center;
+	gap: .625rem;
+	margin-top: 10px;
+	font-weight: 500;
+	font-family: robotoReg;
+	font-size: .875rem;
+	letter-spacing: .01em;
+	text-align: center;
+}
+
+.btns button {
+	padding: .625rem 1.5rem;
+}
+
+.btns button:nth-child(2) {
+	border: 1px solid var(--outline-border-color);
+}

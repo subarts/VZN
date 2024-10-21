@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styles from './Button.module.css';
+import styles from './button.module.css';
 
 interface IButton {
     id?: string;
@@ -23,7 +23,7 @@ const Button: FC<IButton> = ({
     className,
     children,
     size='Regular',
-    shape='Round',
+    shape = 'Round',
 }) => {
     const baseClass = styles.button; 
     const colorClass =  styles[`button${color}`];

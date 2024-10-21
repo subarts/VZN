@@ -23,6 +23,15 @@
   width: 100%;
   letter-spacing: 0;
 }
+
+.header p {
+  font-size: .625rem;
+  font-weight: 500;
+  font-family: robotoReg;
+  letter-spacing: .03em;
+  color: var(--text-second-color);
+}
+
 .justifyStartH1 h1{
   justify-content: flex-start;
 }
