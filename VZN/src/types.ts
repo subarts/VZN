@@ -5,6 +5,14 @@ export type LogPass = {
 export type THeaderStyle = {
   style: Array<string> | string | undefined
 }
+export type TListRequest = {
+  Sender: string
+  Num: string
+  Receiver: string
+  StartArrivalMoveDate: ""
+  endArrivalMoveDate: ""
+}
+
 export type TListVznPropsItem = {
   ArrivalMoveDate: string
   Code: number

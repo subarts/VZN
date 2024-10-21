@@ -11,6 +11,7 @@ import ModalCreateVZN from "../components/modalCreateVZN/ModalCreateVZN"
 import { THeaderStyle } from "../types"
 import { ConsignmentsVzn } from "../api/ConsignmentsVzn"
 import { TListVznPropsItem } from "../types"
+import { TListRequest } from "../types"
 type TVisibleModal = "create" | "search"
 
 const CatalogVzn = () => {
@@ -18,16 +19,9 @@ const CatalogVzn = () => {
     "search"
   )
   /* начальное состояние добавлено тк без фильтров приходит массив на 9к+ элементов  */
-  type TListRequest = {
-    Sender: string
-    Num: string
-    Receiver: string
-    StartArrivalMoveDate: ""
-    endArrivalMoveDate: ""
-  }
 
   const [bodyRequest, setBodyRequest] = useState<TListRequest>({
-    Num: "5002567%",
+    Num: "500223%",
     Sender: "",
     Receiver: "",
     StartArrivalMoveDate: "",
@@ -43,6 +37,10 @@ const CatalogVzn = () => {
     }
     requestVzn()
   }, [])
+  function filterListVzn(list) {
+    setListVzn(list)
+    setVisibleModalType("")
+  }
   const isConsignment =
     window.location.pathname === "/ListConsignment" /* флаг на расход приход */
   const headerProps: THeaderStyle = visibleModalType
@@ -92,7 +90,7 @@ const CatalogVzn = () => {
       <Header render={() => headerRenderProps()} headerProps={headerProps} />
 
       {visibleModalType === "search" ? (
-        <ModalFilterVzn />
+        <ModalFilterVzn filterListVzn={filterListVzn} />
       ) : visibleModalType === "create" ? (
         <ModalCreateVZN />
       ) : (
