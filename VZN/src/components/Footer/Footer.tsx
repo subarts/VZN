@@ -19,7 +19,7 @@ export default function Footer() {
           </Link>
         </li>
         <li className={styles.item}>
-          <Link to="">
+          <Link to="/menu/modalScan">
             <ScannerIcon className={""} />
             <p className={styles.text}>Сканер</p>
           </Link>
