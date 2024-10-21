@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Button from "../components/button/Button"
 import Consigment from "../components/consigment/Consigment"
 import Footer from "../components/footer/Footer"
@@ -9,14 +9,38 @@ import PLusIcon from "../components/icons/PlusIcon"
 import ModalFilterVzn from "../components/modalFilterVzn/ModalFilterVzn"
 import ModalCreateVZN from "../components/modalCreateVZN/ModalCreateVZN"
 import { THeaderStyle } from "../types"
-
+import { ConsignmentsVzn } from "../api/ConsignmentsVzn"
+import { TListVznPropsItem } from "../types"
+import { TListRequest } from "../types"
 type TVisibleModal = "create" | "search"
 
 const CatalogVzn = () => {
   const [visibleModalType, setVisibleModalType] = useState<TVisibleModal | "">(
     "search"
   )
+  /* начальное состояние добавлено тк без фильтров приходит массив на 9к+ элементов  */
 
+  const [bodyRequest, setBodyRequest] = useState<TListRequest>({
+    Num: "500223%",
+    Sender: "",
+    Receiver: "",
+    StartArrivalMoveDate: "",
+    endArrivalMoveDate: "",
+  })
+
+  const [listVzn, setListVzn] = useState<Array<TListVznPropsItem>>([])
+  useEffect(() => {
+    const requestVzn = async () => {
+      const result = await ConsignmentsVzn(bodyRequest)
+
+      setListVzn(result)
+    }
+    requestVzn()
+  }, [])
+  function filterListVzn(list) {
+    setListVzn(list)
+    setVisibleModalType("")
+  }
   const isConsignment =
     window.location.pathname === "/ListConsignment" /* флаг на расход приход */
   const headerProps: THeaderStyle = visibleModalType
@@ -66,11 +90,11 @@ const CatalogVzn = () => {
       <Header render={() => headerRenderProps()} headerProps={headerProps} />
 
       {visibleModalType === "search" ? (
-        <ModalFilterVzn />
+        <ModalFilterVzn filterListVzn={filterListVzn} />
       ) : visibleModalType === "create" ? (
         <ModalCreateVZN />
       ) : (
-        <Consigment />
+        <Consigment listVzn={listVzn} />
       )}
 
       <Footer />

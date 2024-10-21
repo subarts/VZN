@@ -9,7 +9,7 @@ fieldset{
     padding-inline-start: 0.75em;
     padding-block-end: 0.625em;
     color: var(--text-primary-color);
-    width: 100%;
+
 }
 .inputFilter{
     background-color: var(--background-main-color);
