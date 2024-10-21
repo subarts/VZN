@@ -1,25 +1,15 @@
 import React from "react"
 import styles from "./header.module.css"
-import { ReactSVG } from "react-svg"
-import closeIcon from "../../assets/icons/close.svg"
-import moreDefaultIcon from "../../assets/icons/moreDefault.svg"
-
-type HeaderProps = {
-  title: string
-  style: Array<string>
+import { THeaderStyle } from "../../types"
+type THeaderProps = {
+  render: () => React.ReactNode
+  headerProps?: THeaderStyle
 }
-
-const Header: React.FC<HeaderProps> = ({ title, style }) => {
-  const headerStyles = style.map((el: string) => styles[el]).join(" ")
+export const Header: React.FC<THeaderProps> = ({ render, headerProps }) => {
+  const headerStyles = Array.isArray(headerProps?.style)
+    ? headerProps?.style?.map((el: string) => styles[el]).join(" ")
+    : headerProps
   return (
-    <header className={headerStyles}>
-      <h1>
-        {/* {<ReactSVG src={closeIcon} className="iconClose" />} */}
-        {title}
-      </h1>
-      {/*  {<ReactSVG src={moreDefaultIcon} className="iconMoreDefault" />} */}
-    </header>
+    <header className={styles.header + " " + headerStyles}>{render()}</header>
   )
 }
-
-export default Header

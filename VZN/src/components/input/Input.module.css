@@ -9,7 +9,6 @@ fieldset{
     color: var(--text-primary-color);
     max-width: 304px;
 }
-
 .inputFilter{
     background-color: var(--background-main-color);
     line-height: 150%;

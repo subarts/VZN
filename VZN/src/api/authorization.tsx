@@ -1,5 +1,5 @@
 import { LogPass } from "../types"
-export async function authorization(body: LogPass) {
+export async function Authorization(body: LogPass) {
   fetch("http://92.55.15.91:8225/login.getAuthToken", {
     method: "POST",
     headers: {

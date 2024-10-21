@@ -4,9 +4,8 @@ import Input from "../../components/input/Input"
 import Button from "../../components/button/Button"
 import style from "./Auth.module.css"
 import { useState } from "react"
-import { authorization } from "../../api/authorization"
+import { Authorization } from "../../api/Authorization"
 import { LogPass } from "../../types"
-
 const Auth = () => {
   const [logInform, setLogInform] = useState<LogPass>({
     login: "",
@@ -14,7 +13,7 @@ const Auth = () => {
   })
   function getAuthToken(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    authorization(logInform)
+    Authorization(logInform)
   }
 
   return (
@@ -24,7 +23,7 @@ const Auth = () => {
           <img src={logo} width={"50px"} height={"50px"} />
           <h1>OmpMobile</h1>
         </div>
-        <form action="" onSubmit={getAuthToken}>
+        <form action="" onSubmit={getAuthToken} className={style.form}>
           <Input
             legendText="Логин"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -38,7 +37,10 @@ const Auth = () => {
               setLogInform({ ...logInform, password: e.target.value })
             }
           />
-          <Button type="submit" size="Regular" color="Blue">Войти</Button>
+
+          <Button type="submit" size="Regular" color="Blue">
+            Войти
+          </Button>
         </form>
       </main>
       <Footer />
