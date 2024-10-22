@@ -1,5 +1,4 @@
 .selectFieldset {
-    width: 305px;
     font-family: "robotoReg";
     font-size: 0.75rem;
     border-radius: 0.25rem;
@@ -7,16 +6,11 @@
     padding-block-start: 0.35em;
     padding-block-end: 1.2em;
     padding-inline-start: 0.7em;
-  
+    position: relative;
 }
 
 .selectLegend {
     padding: 0px 0.375rem;
-}
-
-.customSelectWrapper {
-    position: relative;
-    width: 290px;
 }
 
 .customSelect {
@@ -24,6 +18,8 @@
     font-size: 15px;
     cursor: pointer;
     padding: 0.5rem;
+    overflow: hidden;
+    height: 20px;
 }
 
 .noPadding {
@@ -32,23 +28,22 @@
 
 .selectedOption {
     font-size: 1rem;
-    white-space: nowrap; /* Запрещает перенос текста */
-    overflow: hidden; /* Скрывает текст, который выходит за границы */
     text-overflow: ellipsis;
+    text-wrap: wrap;
+    width: 120%;
 }
 
 .optionsList {
     position: absolute;
-    top: 100%;
+    top: 2.5rem;
     left: 0;
     width: 100%;
     background-color: var(--background-modal-color);
     border: 1px solid var(--outline-ligth-color);
     border-radius: 0.25rem;
-    max-height: 200px;
     overflow-y: auto;
     z-index: 10;
-    margin-top: 0.9rem;
+
 }
 
 .option {

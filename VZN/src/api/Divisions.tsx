@@ -1,23 +1,29 @@
 export async function Divisions(/* metod,body */) {
-  const metod = "stock/wsDepotcards.loadByFilter"
+  const metod = "divisions/storeDivisions.avDivisions"
   const authToken = sessionStorage.getItem("authToken")
-  fetch(`http://92.55.15.91:8225/${metod}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      AuthToken: `${authToken}`,
-    },
-    body: JSON.stringify({}),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.error.Code !== 0) {
-        alert(data.error.String)
-      } else {
-        console.log(data, "data")
-        /*    return data */
-      }
+  try {
+    const response = await fetch(`http://92.55.15.91:8225/${metod}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        AuthToken: `${authToken}`,
+      },
+      body: JSON.stringify({
+        params: {
+          CurrentDivCode: 0,
+          CurrentDivType: 0,
+          IsFilter: false,
+        },
+      }),
     })
-    .catch((err) => alert(err))
+    const data = await response.json()
+    if (data.error.Code !== 0) {
+      throw new Error(data.error.String)
+    }
+    console.log(data)
+    return data.divisions
+  } catch (err) {
+    alert(err)
+  }
 }
