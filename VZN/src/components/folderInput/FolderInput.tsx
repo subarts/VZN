@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import styles from "./folderSelect.module.css"
+import styles from "./folderInput.module.css"
 import FolderInputIcon from "../icons/FolderInputIcon"
 import { Divisions } from "../../api/Divisions"
-
+import { useStore } from "../../store/Store"
 type SelectProps = {
   legend: string
   className?: string
@@ -21,11 +21,13 @@ export default function FolderSelect({
   const [optionSelected, setOptionSelected] = useState(false)
 
   const [divisions, setDivisions] = useState([{ code: 1, name: "" }])
+
+  const { addDivisions } = useStore((state) => state)
   useEffect(() => {
     const requestDivisions = async (): Promise<void> => {
       const result = await Divisions()
-      console.log(result, "res")
       setDivisions(result)
+      addDivisions(result)
     }
     requestDivisions()
   }, [])
@@ -90,6 +92,5 @@ export default function FolderSelect({
   )
 }
 function getDiv() {
-    throw new Error("Function not implemented.")
+  throw new Error("Function not implemented.")
 }
-

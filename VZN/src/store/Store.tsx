@@ -5,9 +5,17 @@ export const useStore = create(
   persist(
     (set, get) => ({
       listVzn: [],
+      addVzn: (vzn) => set({ listVzn: vzn }),
       divisions: [],
-      addVzn: (vzn) => set((state) => ({ listVzn: vzn })),
-      adddivisions: (divisions) => set((state) => ({ divisions: divisions })),
+      addDivisions: (divisions) => set({ divisions }),
+      findDivison: (division) => {
+        const result = get().divisions.filter((el) => el.code === division)
+        return result
+      },
+      findVzn: (code) => {
+        const result = get().listVzn.filter((el) => el.Code === code)
+        return result[0].Num
+      },
     }),
 
     {
