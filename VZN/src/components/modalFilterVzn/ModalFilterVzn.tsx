@@ -5,47 +5,61 @@ import style from "./modalFilterVzn.module.css"
 import { TListRequest } from "../../types"
 import { useState } from "react"
 import { ConsignmentsVzn } from "../../api/ConsignmentsVzn"
+import { TListVznPropsItem } from "../../types"
 
-const ModalFilterVzn = ({ filterListVzn }) => {
+import { useStore } from "../../store/Store"
+import FolderInput from "../folderInput/FolderInput"
+
+type TFuncVoid = {
+  filterListVzn: (e: Array<TListVznPropsItem>) => void
+}
+const ModalFilterVzn: React.FC<TFuncVoid> = ({ filterListVzn }) => {
   const [bodyRequest, setBodyRequest] = useState<TListRequest>({
-    Num: "50022%%",
+    Num: "50022%",
     Sender: "",
     Receiver: "",
     StartArrivalMoveDate: "",
     endArrivalMoveDate: "",
   })
 
+  const { addVzn } = useStore((state) => state)
   const requestVzn = async (body: TListRequest): Promise<void> => {
     const result = await ConsignmentsVzn(body)
     filterListVzn(result)
+    addVzn(result)
   }
 
   function getList(): void {
     requestVzn(bodyRequest)
   }
-
+  function addStartDateBodyrequest(date: string): void {
+    setBodyRequest({ ...bodyRequest, StartArrivalMoveDate: date })
+  }
+  function addEndDateBodyrequest(date: string): void {
+    setBodyRequest({ ...bodyRequest, endArrivalMoveDate: date })
+  }
+  function addSender(sender: string): void {
+    setBodyRequest({ ...bodyRequest, Sender: sender })
+  }
+  function addReceiver(sender: string): void {
+    setBodyRequest({ ...bodyRequest, Receiver: sender })
+  }
+  const addDates = [addStartDateBodyrequest, addEndDateBodyrequest]
   return (
     <main className={style.main}>
       <div className={style.listInput}>
         <Input
           legendText="Номер ВЗН"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setBodyRequest({ ...bodyRequest, Num: e.target.value + "%" })
+            setBodyRequest({
+              ...bodyRequest,
+              Num: e.target.value /*+ "%" для поиска по маске*/,
+            })
           }
         />
-        <Input
-          legendText="Отправитель"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setBodyRequest({ ...bodyRequest, Sender: e.target.value })
-          }
-        />
-        <Input
-          legendText="Получатель"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setBodyRequest({ ...bodyRequest, Receiver: e.target.value })
-          }
-        />
-        <DateOfAcceptance />
+        <FolderInput legend="Отправитель" addToBodyRequest={addSender} />
+        <FolderInput legend="Получатель" addToBodyRequest={addReceiver} />
+        <DateOfAcceptance addDates={addDates} />
       </div>
       <div className="listButton">
         <Button size={"Regular"} onClick={getList}>

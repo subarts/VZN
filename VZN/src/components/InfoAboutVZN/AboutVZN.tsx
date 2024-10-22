@@ -1,24 +1,44 @@
-import Button from '../button/Button'
-import style from './aboutVZN.module.css'
-
+import { useParams } from "react-router-dom"
+import Button from "../button/Button"
+import style from "./aboutVZN.module.css"
+import { InfoVzn } from "../../api/InfoVzn"
+import { useStore } from "../../store/Store"
 export const AboutVZN = () => {
-	return (
-		<main className={style.main}>
-			<section className={style.info}>
-				<p><span className={style.bold}>Отправитель: </span>Цех 01 / участок Цеха 01</p>
-				<p><span className={style.bold}>Получатель: </span>Цех 02 / участок Цеха 02</p>
-				<p><span className={style.bold}>Статус: </span>НеУтв</p>
-				<p><span className={style.bold}>Дата выдачи: </span>15.06.2024</p>
-			</section>
-			<section className={style.listSection}>
-				<div className={style.createBtn}>
-					<Button size='Small'>Создать</Button>
-				</div>
+  const listVzn = useStore((state) => state.listVzn)
+  const numberVzn = useParams()
+  const bodyRequest = {
+    WsInplantCode: numberVzn,
+  }
+  InfoVzn(bodyRequest)
 
-				<div className={style.list}>
-					Cписок пуст...
-				</div>
-			</section>
-		</main>
-	);
+  const itemVzn = listVzn.filter((el) => el.Num == numberVzn.numberVzn)[0]
+  console.log(itemVzn)
+  return (
+    <main className={style.main}>
+      <section className={style.info}>
+        <p>
+          <span className={style.bold}>Отправитель: </span>
+          {itemVzn.Sender} / участок Цеха 01
+        </p>
+        <p>
+          <span className={style.bold}>Получатель: </span>
+          {itemVzn.Receiver} / участок Цеха 02
+        </p>
+        <p>
+          <span className={style.bold}>Статус: </span>НеУтв
+        </p>
+        <p>
+          <span className={style.bold}>Дата выдачи: </span>
+          {itemVzn.LeaveMoveDate}
+        </p>
+      </section>
+      <section className={style.listSection}>
+        <div className={style.createBtn}>
+          <Button size="Small">Создать</Button>
+        </div>
+
+        <div className={style.list}>Cписок пуст...</div>
+      </section>
+    </main>
+  )
 }

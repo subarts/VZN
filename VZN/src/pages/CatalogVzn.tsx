@@ -12,6 +12,7 @@ import { THeaderStyle } from "../types"
 import { ConsignmentsVzn } from "../api/ConsignmentsVzn"
 import { TListVznPropsItem } from "../types"
 import { TListRequest } from "../types"
+import { useStore } from "../store/Store"
 type TVisibleModal = "create" | "search"
 
 const CatalogVzn = () => {
@@ -29,20 +30,24 @@ const CatalogVzn = () => {
   })
 
   const [listVzn, setListVzn] = useState<Array<TListVznPropsItem>>([])
+  /* в стор */
+  const { addVzn } = useStore((state) => state)
   useEffect(() => {
-    const requestVzn = async () => {
+    const requestVzn = async (): Promise<void> => {
       const result = await ConsignmentsVzn(bodyRequest)
-
       setListVzn(result)
+      addVzn(result)
     }
     requestVzn()
   }, [])
-  function filterListVzn(list) {
+  function filterListVzn(list: Array<TListVznPropsItem>): void {
     setListVzn(list)
     setVisibleModalType("")
   }
+
   const isConsignment =
     window.location.pathname === "/ListConsignment" /* флаг на расход приход */
+
   const headerProps: THeaderStyle = visibleModalType
     ? { style: ["border", "justifyStartH1"] }
     : { style: "" }
