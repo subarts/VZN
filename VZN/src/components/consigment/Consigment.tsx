@@ -1,12 +1,15 @@
 import styles from "./consigment.module.css"
 import { Link } from "react-router-dom"
 import { TListVznPropsItem } from "../../types"
+import { useStore } from "../../store/Store"
+
 type listVznProps = {
   listVzn: TListVznPropsItem[]
 }
+
 const Consigment: React.FC<listVznProps> = ({ listVzn }) => {
-  console.log(listVzn)
-  const isEpmtyObj = Object.entries(listVzn).length > 0
+  const isObject: TListVznPropsItem[] = listVzn ? listVzn : []
+  const isEpmtyObj = Object.entries(isObject).length > 0
   return (
     <div className={styles.consigmentList}>
       {isEpmtyObj ? (

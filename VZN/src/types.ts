@@ -9,8 +9,8 @@ export type TListRequest = {
   Sender: string
   Num: string
   Receiver: string
-  StartArrivalMoveDate: ""
-  endArrivalMoveDate: ""
+  StartArrivalMoveDate: string
+  endArrivalMoveDate: string
 }
 
 export type TListVznPropsItem = {
