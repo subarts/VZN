@@ -45,8 +45,9 @@ const CatalogVzn = () => {
     setVisibleModalType("")
   }
 
-  const isConsignment =
-    window.location.pathname === "/ListConsignment" /* флаг на расход приход */
+  const isConsignment: boolean = window.location.pathname.includes(
+    "/ListConsignment"
+  ) /* флаг на расход приход */
 
   const headerProps: THeaderStyle = visibleModalType
     ? { style: ["border", "justifyStartH1"] }

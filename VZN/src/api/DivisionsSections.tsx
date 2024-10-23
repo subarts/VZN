@@ -1,7 +1,6 @@
-export async function InfoCardsVzn(body) {
-  const metod = "stock/wsInplants/contents.loadByFilter"
+/* export async function DivisionsSections(/* metod */ body) {
+  const metod = "divisions/storeDivisions.avSections"
   const authToken = sessionStorage.getItem("authToken")
-
   try {
     const response = await fetch(`http://92.55.15.91:8225/${metod}`, {
       method: "POST",
@@ -11,18 +10,15 @@ export async function InfoCardsVzn(body) {
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: {
-          WsInplantCode: 0,
-        } /* body пока 0 тк других все равно не находит  !поиск карточек, в ответе нас интересует LeaveCardCode- номер карточки*/,
+        params: body,
       }),
     })
-
     const data = await response.json()
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.wsInplantContents
+    return data.sections
   } catch (err) {
     alert(err)
   }
-}
+} 

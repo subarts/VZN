@@ -10,8 +10,15 @@ export const InfoAboutVZN = () => {
   const { findVzn } = useStore((state) => state)
   const code: number = Number(useParams().numberUnicCodeVzn)
   const title: string = findVzn(code)
+
+  const isConsignment = window.location.pathname.includes("/ListConsignment")
+
   function headerRenderProps(): React.ReactNode {
-    return <h1>ВЗН №{title} (Расход)</h1>
+    return (
+      <h1>
+        ВЗН №{title} ({isConsignment ? "Расход" : "Приход"})
+      </h1>
+    )
   }
 
   return (
