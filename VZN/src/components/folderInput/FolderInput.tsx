@@ -1,33 +1,46 @@
-import { useState } from "react"
-import styles from "../select/Select.module.css"
-
+import { useEffect, useState } from "react"
+import styles from "./folderInput.module.css"
+import FolderInputIcon from "../icons/FolderInputIcon"
+import { Divisions } from "../../api/Divisions"
+import { useStore } from "../../store/Store"
 type SelectProps = {
   legend: string
   className?: string
-  disabled: boolean
+  disabled?: boolean
+  addToBodyRequest: (e: any) => void
 }
 
-export default function CustomSelect({
+export default function FolderSelect({
   legend,
   className = "",
   disabled,
+  addToBodyRequest,
 }: SelectProps) {
-  const [selectedValue, setSelectedValue] = useState("")
+  const [selectedValue, setSelectedValue] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
   const [optionSelected, setOptionSelected] = useState(false)
 
-  const options = [
-    { value: "expense", label: "Внутризаводская накладная УП (Расход)" },
-    { value: "income", label: "Внутризаводская накладная УП (Приход)" },
-  ]
+  const [divisions, setDivisions] = useState([{ Code: 1, Name: "" }])
 
-  const handleOptionClick = (value: string) => {
+  const { addDivisions } = useStore((state) => state)
+  useEffect(() => {
+    const requestDivisions = async (): Promise<void> => {
+      const result = await Divisions()
+      setDivisions(result)
+      addDivisions(result)
+    }
+    requestDivisions()
+  }, [])
+
+  const handleOptionClick = (value: number) => {
+    addToBodyRequest(value)
     setSelectedValue(value)
     setOptionSelected(true)
     setIsOpen(false)
   }
 
   const toggleDropdown = () => {
+    isOpen ? getDiv() : ""
     if (!disabled) {
       setIsOpen(!isOpen)
     }
@@ -53,23 +66,23 @@ export default function CustomSelect({
           className={`${styles.customSelect} ${
             disabled ? styles.disabledSelect : ""
           } ${optionSelected ? styles.noPadding : ""}`}
-          onClick={toggleDropdown}
         >
           <div className={styles.selectedOption}>
             {selectedValue
-              ? options.find((option) => option.value === selectedValue)?.label
+              ? divisions.find((option) => option.Code === selectedValue)?.Name
               : ""}
           </div>
+          <FolderInputIcon onClick={toggleDropdown} />
         </div>
         {isOpen && !disabled && (
           <div className={styles.optionsList}>
-            {options.map((option, index) => (
+            {divisions.map((option, index) => (
               <div
                 key={index}
                 className={styles.option}
-                onClick={() => handleOptionClick(option.value)}
+                onClick={() => handleOptionClick(option.Code)}
               >
-                {option.label}
+                {option.Name}
               </div>
             ))}
           </div>
@@ -77,4 +90,7 @@ export default function CustomSelect({
       </div>
     </fieldset>
   )
+}
+function getDiv() {
+  throw new Error("Function not implemented.")
 }

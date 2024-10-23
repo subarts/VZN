@@ -23,3 +23,6 @@ h1{
    line-height: 1rem;
    letter-spacing: 0.5px;
 }
+form fieldset{
+  width: 100%;
+}

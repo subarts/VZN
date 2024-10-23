@@ -25,7 +25,7 @@
 #root{
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  height: 100dvh;
 }
 body{
   background-color: var( --background-main-color);
@@ -42,6 +42,16 @@ a:hover{
 .listButtons{
   display: flex;
   gap: 4px;
+}
+.listButton{
+  display: flex;
+  gap: 10px;
+  font-family: "robotoMedium";
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+
+  justify-content: center;
 }
 
 @font-face {

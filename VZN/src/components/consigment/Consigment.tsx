@@ -1,33 +1,40 @@
 import styles from "./consigment.module.css"
-type ConsigmentProps = {
-  vzn: string
-  sender: string
-  recipient: string
-  dateOfIssue: string
+import { Link } from "react-router-dom"
+import { TListVznPropsItem } from "../../types"
+import { useStore } from "../../store/Store"
+type listVznProps = {
+  listVzn: TListVznPropsItem[]
 }
-const Consigment: React.FC = () => {
-  const obj = {} //сменить на пропсы которые будут приходить
-  const isEpmtyObj = Object.entries(obj).length > 0
-
+/* запрос участков подразделений */
+const Consigment: React.FC<listVznProps> = ({ listVzn }) => {
+  const isObject: TListVznPropsItem[] = listVzn ? listVzn : []
+  const isEpmtyObj: boolean = Object.entries(isObject).length > 0
+  const { findDivison } = useStore((state) => state)
   return (
     <div className={styles.consigmentList}>
       {isEpmtyObj ? (
-        obj.map((el: ConsigmentProps, index: number) => {
+        listVzn?.map((el: TListVznPropsItem, index: number) => {
+          const senderName = findDivison(el.Sender)
+          const receiverName = findDivison(el.Receiver)
           return (
-            <div className={styles.consigmentItem} key={index}>
-              <h4>{el.vzn}</h4>
+            <Link
+              to={el.Code.toString()}
+              className={styles.consigmentItem}
+              key={index}
+            >
+              <h4>ВЗН №{el.Num}</h4>
               <ul className={styles.consigmentItemDescript}>
                 <li>
-                  Отправитель: <span>{el.sender}</span>
+                  Отправитель: <span>{senderName}</span>
                 </li>
                 <li>
-                  Получатель: <span>{el.recipient}</span>
+                  Получатель: <span>{receiverName}</span>
                 </li>
                 <li>
-                  Дата выдачи: <span>{el.dateOfIssue}</span>
+                  Дата выдачи: <span>{el.LeaveMoveDate}</span>
                 </li>
               </ul>
-            </div>
+            </Link>
           )
         })
       ) : (
