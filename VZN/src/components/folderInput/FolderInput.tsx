@@ -20,7 +20,7 @@ export default function FolderSelect({
   const [isOpen, setIsOpen] = useState(false)
   const [optionSelected, setOptionSelected] = useState(false)
 
-  const [divisions, setDivisions] = useState([{ code: 1, name: "" }])
+  const [divisions, setDivisions] = useState([{ Code: 1, Name: "" }])
 
   const { addDivisions } = useStore((state) => state)
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function FolderSelect({
         >
           <div className={styles.selectedOption}>
             {selectedValue
-              ? divisions.find((option) => option.code === selectedValue)?.name
+              ? divisions.find((option) => option.Code === selectedValue)?.Name
               : ""}
           </div>
           <FolderInputIcon onClick={toggleDropdown} />
@@ -80,9 +80,9 @@ export default function FolderSelect({
               <div
                 key={index}
                 className={styles.option}
-                onClick={() => handleOptionClick(option.code)}
+                onClick={() => handleOptionClick(option.Code)}
               >
-                {option.name}
+                {option.Name}
               </div>
             ))}
           </div>

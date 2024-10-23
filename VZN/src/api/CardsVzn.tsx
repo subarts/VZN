@@ -16,10 +16,10 @@ export async function CardsVzn() {
     })
 
     const data = await response.json()
-
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
+    return data
   } catch (err) {
     alert(err)
   }
