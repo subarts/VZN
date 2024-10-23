@@ -44,7 +44,10 @@ const ModalFilterVzn: React.FC<TFuncVoid> = ({ filterListVzn }) => {
   function addReceiver(sender: string): void {
     setBodyRequest({ ...bodyRequest, Receiver: sender })
   }
-  const addDates = [addStartDateBodyrequest, addEndDateBodyrequest]
+  const addDates: Array<(date: string) => void> = [
+    addStartDateBodyrequest,
+    addEndDateBodyrequest,
+  ]
   return (
     <main className={style.main}>
       <div className={style.listInput}>

@@ -4,9 +4,10 @@
 	padding: .25rem .5rem;
 	display: flex;
 	flex-direction: column;
+	overflow: auto;
 }
 
-.info {
+.info,.title {
 	font-family: robotoReg;
 	font-weight: 500;
 	font-size: .75rem;
@@ -19,14 +20,13 @@
 	margin-top: 2px;
 }
 
-.bold {
+.bold,.listCard span {
 	font-weight: 900;
 }
 
 .listSection {
 	display: flex;
 	flex-direction: column;
-	flex-grow: 1;
 }
 
 .createBtn {
@@ -35,7 +35,7 @@
 	margin-bottom: .25rem;
 }
 
-.createBtn button {
+.createBtn button,.listCard {
 	font-size: 10px;
 	letter-spacing: .01em;
 	font-weight: 500;
@@ -48,4 +48,14 @@
 	flex-grow: 1;
 	display: flex;
 	border-radius: 0.25rem;
+	flex-direction: column;
+	overflow: auto;
+	scrollbar-width: none;
+}
+.list>a{
+	border-bottom: 1px solid var(--outline-border-list-color);
+	padding: 0.25rem;
+}
+.list>a:last-child{
+	border:none
 }

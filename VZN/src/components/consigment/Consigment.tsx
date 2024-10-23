@@ -5,10 +5,10 @@ import { useStore } from "../../store/Store"
 type listVznProps = {
   listVzn: TListVznPropsItem[]
 }
-
+/* запрос участков подразделений */
 const Consigment: React.FC<listVznProps> = ({ listVzn }) => {
   const isObject: TListVznPropsItem[] = listVzn ? listVzn : []
-  const isEpmtyObj = Object.entries(isObject).length > 0
+  const isEpmtyObj: boolean = Object.entries(isObject).length > 0
   const { findDivison } = useStore((state) => state)
   return (
     <div className={styles.consigmentList}>
@@ -25,10 +25,10 @@ const Consigment: React.FC<listVznProps> = ({ listVzn }) => {
               <h4>ВЗН №{el.Num}</h4>
               <ul className={styles.consigmentItemDescript}>
                 <li>
-                  Отправитель: <span>{senderName[0].name}</span>
+                  Отправитель: <span>{senderName}</span>
                 </li>
                 <li>
-                  Получатель: <span>{receiverName[0].name}</span>
+                  Получатель: <span>{receiverName}</span>
                 </li>
                 <li>
                   Дата выдачи: <span>{el.LeaveMoveDate}</span>
