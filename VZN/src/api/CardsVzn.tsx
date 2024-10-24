@@ -1,4 +1,7 @@
-export async function CardsVzn() {
+import { IDepotCards } from '../types'
+
+
+export async function CardsVzn(codes: Array<number>): Promise<IDepotCards[] | undefined> {
   const metod = "stock/stockDepotcards.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
 
@@ -11,7 +14,7 @@ export async function CardsVzn() {
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: { Num: "2%" } /* пока существуют одна карточка  */,
+        flt: { Codes: codes } 
       }),
     })
 
@@ -19,7 +22,7 @@ export async function CardsVzn() {
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data
+    return data.depotcards
   } catch (err) {
     alert(err)
   }

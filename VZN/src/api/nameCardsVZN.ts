@@ -1,4 +1,6 @@
-export async function nameCardsVZN(value: Array<number>) {
+import { INameCardResult } from '../types'
+
+export async function nameCardsVZN(value: Array<number>): Promise<INameCardResult[] | undefined> {
   const metod = "stockobjs.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
 
@@ -21,7 +23,7 @@ export async function nameCardsVZN(value: Array<number>) {
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data
+    return data.stockobjs
   } catch (err) {
     alert(err)
   }
