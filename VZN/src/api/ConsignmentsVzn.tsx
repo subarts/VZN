@@ -20,7 +20,6 @@ export async function ConsignmentsVzn(body) {
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-
     return data.wsInplants
   } catch (err) {
     alert(err)

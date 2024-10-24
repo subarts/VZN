@@ -2,40 +2,19 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { CardsVzn } from "../../api/CardsVzn"
 import { InfoCardsVzn } from "../../api/InfoCardsVzn"
-import { NameCardsVZN } from "../../api/NameCardsVZN"
+import { nameCardsVZN } from '../../api/nameCardsVZN'
 import { useStore } from "../../store/Store"
+import { InfoCardsVZNInterface } from '../../types'
+import { IDepotCards } from '../../types'
+import { INameCardResult } from '../../types'
 import Button from "../button/Button"
 import style from "./aboutVZN.module.css"
 
-interface IInfoCardResult {
-  ArrivalCardCode: number
-  ArrivalCardType: number
-  ArrivalQty: number
-  ArticleOfExpense: number
-  Code: number
-  InplantCode: number
-  LeaveCardCode: number
-  LeaveQty: number
-  LotCode: number
-  OrderCode: number
-}
 
-interface INameCardResult {
-  BaseCode: number
-  BaseType: number
-  Code: number
-  Description: string
-  KoType: number
-  MeasCode: number
-  Name: string
-  NomNum: string
-  Notice: string
-  Sign: string
-}
 
 type TRequestVzn = {
-  infoCard: IInfoCardResult[]
-  nameCard: INameCardResult[]
+  infoCard?: InfoCardsVZNInterface[]
+  nameCard?: INameCardResult[]
 }
 
 type TCards = {
@@ -44,42 +23,64 @@ type TCards = {
   Name?: string
   Sign?: string
 }
+
+
+
 export const AboutVZN = () => {
   const listVzn = useStore((state) => state.listVzn)
-  const numberUnicCodeVzn = useParams()
+  const { numberUnicCodeVzn } = useParams()
+
   const bodyRequest = { WsInplantCode: listVzn.Num }
-  const { findDivison } = useStore((state) => state)
+  const { findDivision } = useStore((state) => state)
   const [cards, setCards] = useState<TCards[]>([])
 
-  const requestVzn = async (): Promise<TRequestVzn> => {
-    const cardsVzn = await CardsVzn()
-    const codes: number[] = []
-    cardsVzn.depotcards.forEach((item) => codes.push(item.StockobjCode))
-    const infoCardResult = await InfoCardsVzn()
-    const nameCardResult = await NameCardsVZN(codes)
-    return {
-      infoCard: infoCardResult,
-      nameCard: nameCardResult.stockobjs,
+  const itemVzn = listVzn.filter(
+    (el) => {
+      if (!numberUnicCodeVzn) return
+      if (el.Code === +numberUnicCodeVzn)
+        return el
+      return null
     }
-    // setCards((prev) => [...prev, {
-    //   ArrivalQty: ,
-    //   LeaveQty:
-    //     Name:,
-    //   Sign:
-    // }])
+  )[0]
+
+
+  const requestVzn = async (): Promise<TRequestVzn | undefined> => {
+    if (!numberUnicCodeVzn) return
+    try {
+      const data: InfoCardsVZNInterface[] | undefined = await InfoCardsVzn(+numberUnicCodeVzn)
+      if (!data) return
+
+      const leaveCardCodes: Array<number> = data.map(item => item.LeaveCardCode)
+      const depotCards: IDepotCards[] | undefined = await CardsVzn(leaveCardCodes)
+    
+      const stockObjCodes: Array<number> | undefined = depotCards?.map(item => item.StockobjCode)
+
+      if (!stockObjCodes) return
+      const nameCard: INameCardResult[] | undefined = await nameCardsVZN(stockObjCodes)
+
+
+      return {
+        infoCard: data,
+        nameCard: nameCard,
+      }
+    }
+    catch (e) {
+      console.log(e)
+    }
   }
   useEffect(() => {
     async function getData() {
-      const { infoCard, nameCard } = await requestVzn()
+      const data = await requestVzn()
       const cards: Array<TCards> = []
-      infoCard.forEach((item) => {
+      console.log(data)
+      data?.infoCard?.forEach((item) => {
         cards.push({
           ArrivalQty: item.ArrivalQty,
           LeaveQty: item.LeaveQty,
         })
       })
 
-      nameCard.forEach((item, index) => {
+      data?.nameCard?.forEach((item, index) => {
         cards[index]["Name"] = item.Name
         cards[index]["Sign"] = item.Sign
       })
@@ -88,13 +89,10 @@ export const AboutVZN = () => {
     }
     getData()
   }, [])
-
-  const itemVzn = listVzn.filter(
-    (el) => el.Code == numberUnicCodeVzn.numberUnicCodeVzn
-  )[0]
-
-  const senderName: string = findDivison(itemVzn.Sender)
-  const receiverName: string = findDivison(itemVzn.Receiver)
+ 
+  console.log(itemVzn)
+  const senderName: string = findDivision(itemVzn.Sender)
+  const receiverName: string = findDivision(itemVzn.Receiver)
   return (
     <main className={style.main}>
       <section className={style.info}>
@@ -135,7 +133,7 @@ export const AboutVZN = () => {
                   {el.ArrivalQty}
                 </li>
                 <li>
-                  <span>Дата выдачи: </span>
+                  {/* <span>Дата выдачи: </span> */}
                   {/* только для расхода, в приходе скрыть */}
                 </li>
               </ul>

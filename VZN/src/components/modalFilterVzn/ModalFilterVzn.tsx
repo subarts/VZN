@@ -10,10 +10,12 @@ import { TListVznPropsItem } from "../../types"
 import { useStore } from "../../store/Store"
 import FolderInput from "../folderInput/FolderInput"
 
-type TFuncVoid = {
-  filterListVzn: (e: Array<TListVznPropsItem>) => void
+type TVisibleModal = "create" | "search"
+interface IModalFilterVznProps {
+  setVisibleModalType: React.Dispatch<React.SetStateAction<"" | TVisibleModal>>
 }
-const ModalFilterVzn: React.FC<TFuncVoid> = ({ filterListVzn }) => {
+
+const ModalFilterVzn: React.FC<IModalFilterVznProps> = ({setVisibleModalType}) => {
   const [bodyRequest, setBodyRequest] = useState<TListRequest>({
     Num: "50022%",
     Sender: "",
@@ -21,17 +23,14 @@ const ModalFilterVzn: React.FC<TFuncVoid> = ({ filterListVzn }) => {
     StartArrivalMoveDate: "",
     endArrivalMoveDate: "",
   })
-
+  console.log(bodyRequest)
   const { addVzn } = useStore((state) => state)
-  const requestVzn = async (body: TListRequest): Promise<void> => {
-    const result = await ConsignmentsVzn(body)
-    filterListVzn(result)
+
+  const requestVzn = async (): Promise<void> => {
+    const result = await ConsignmentsVzn(bodyRequest)
     addVzn(result)
   }
 
-  function getList(): void {
-    requestVzn(bodyRequest)
-  }
   function addStartDateBodyrequest(date: string): void {
     setBodyRequest({ ...bodyRequest, StartArrivalMoveDate: date })
   }
@@ -65,7 +64,10 @@ const ModalFilterVzn: React.FC<TFuncVoid> = ({ filterListVzn }) => {
         <DateOfAcceptance addDates={addDates} />
       </div>
       <div className="listButton">
-        <Button size={"Regular"} onClick={getList}>
+        <Button size={"Regular"} onClick={() => {
+          requestVzn()
+          setVisibleModalType('')
+        }}>
           Поиск
         </Button>
         <Button shape={"Round"} color={"TransparentWithBorder"}>
