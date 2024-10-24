@@ -2,20 +2,17 @@ import styles from "./consigment.module.css"
 import { Link } from "react-router-dom"
 import { TListVznPropsItem } from "../../types"
 import { useStore } from "../../store/Store"
-type listVznProps = {
-  listVzn: TListVznPropsItem[]
-}
+
 /* запрос участков подразделений */
-const Consigment: React.FC<listVznProps> = ({ listVzn }) => {
-  const isObject: TListVznPropsItem[] = listVzn ? listVzn : []
-  const isEpmtyObj: boolean = Object.entries(isObject).length > 0
-  const { findDivison } = useStore((state) => state)
+const Consigment: React.FC = () => {
+  const { listVzn, findDivision } = useStore()
+  
   return (
     <div className={styles.consigmentList}>
-      {isEpmtyObj ? (
+      {listVzn.length > 0 ? (
         listVzn?.map((el: TListVznPropsItem, index: number) => {
-          const senderName = findDivison(el.Sender)
-          const receiverName = findDivison(el.Receiver)
+          const senderName = findDivision(el.Sender)
+          const receiverName = findDivision(el.Receiver)
           return (
             <Link
               to={el.Code.toString()}

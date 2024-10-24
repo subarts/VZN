@@ -13,6 +13,19 @@ export type TListRequest = {
   endArrivalMoveDate: string
 }
 
+export type TDivisions = {
+  BeginDate: string,
+  Code: number,
+  DivisionParentCode: number,
+  EndDate: string,
+  Name: string,
+  Sign: string,
+  Type: number,
+  WSCode: string
+}
+
+
+
 export type TListVznPropsItem = {
   ArrivalMoveDate: string
   Code: number

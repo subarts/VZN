@@ -1,15 +1,26 @@
 import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
-import TListVznPropsItem from "../types"
+import { TListVznPropsItem } from "../types"
+import { TDivisions } from '../types'
 
-export const useStore = create(
+
+interface IUseStore {
+  listVzn: Array<TListVznPropsItem> | []
+  addVzn: (vzn: TListVznPropsItem[]) => void
+  divisions: TDivisions[] | []
+  addDivisions: (divisions: TDivisions[]) => void
+  findDivision: (division: number) => string
+  findVzn: (code: number) => string
+}
+
+export const useStore = create<IUseStore>()(
   persist(
     (set, get) => ({
       listVzn: [],
       addVzn: (vzn) => set({ listVzn: vzn }),
       divisions: [],
       addDivisions: (divisions) => set({ divisions }),
-      findDivison: (division) => {
+      findDivision: (division) => {
         const result = get().divisions.filter((el) => el.Code === division)
         return result[0].Name
       },
@@ -25,3 +36,5 @@ export const useStore = create(
     }
   )
 )
+
+

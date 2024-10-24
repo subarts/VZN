@@ -19,31 +19,31 @@ const CatalogVzn = () => {
   const [visibleModalType, setVisibleModalType] = useState<TVisibleModal | "">(
     "search"
   )
-  /* начальное состояние добавлено тк без фильтров приходит массив на 9к+ элементов  */
 
-  const [bodyRequest, setBodyRequest] = useState<TListRequest>({
-    Num: "500223%",
-    Sender: "",
-    Receiver: "",
-    StartArrivalMoveDate: "",
-    endArrivalMoveDate: "",
-  })
+  // const [bodyRequest, setBodyRequest] = useState<TListRequest>({
+  //   Num: "500223%",
+  //   Sender: "",
+  //   Receiver: "",
+  //   StartArrivalMoveDate: "",
+  //   endArrivalMoveDate: "",
+  // })
 
-  const [listVzn, setListVzn] = useState<Array<TListVznPropsItem>>([])
+  // const [listVzn, setListVzn] = useState<Array<TListVznPropsItem>>([])
   /* в стор */
-  const { addVzn } = useStore((state) => state)
-  useEffect(() => {
-    const requestVzn = async (): Promise<void> => {
-      const result = await ConsignmentsVzn(bodyRequest)
-      setListVzn(result)
-      addVzn(result)
-    }
-    requestVzn()
-  }, [])
-  function filterListVzn(list: Array<TListVznPropsItem>): void {
-    setListVzn(list)
-    setVisibleModalType("")
-  }
+  // const { addVzn } = useStore((state) => state)
+  // useEffect(() => {
+  //   const requestVzn = async (): Promise<void> => {
+  //     const result = await ConsignmentsVzn(bodyRequest)
+  //     console.log(result)
+  //     setListVzn(result)
+  //     addVzn(result)
+  //   }
+  //   requestVzn()
+  // }, [])
+  // function filterListVzn(list: Array<TListVznPropsItem>): void {
+  //   setListVzn(list)
+  //   setVisibleModalType("")
+  // }
 
   const isConsignment: boolean = window.location.pathname.includes(
     "/ListConsignment"
@@ -96,11 +96,11 @@ const CatalogVzn = () => {
       <Header render={() => headerRenderProps()} headerProps={headerProps} />
 
       {visibleModalType === "search" ? (
-        <ModalFilterVzn filterListVzn={filterListVzn} />
+        <ModalFilterVzn setVisibleModalType={setVisibleModalType} />
       ) : visibleModalType === "create" ? (
         <ModalCreateVZN />
       ) : (
-        <Consigment listVzn={listVzn} />
+        <Consigment />
       )}
 
       <Footer />
