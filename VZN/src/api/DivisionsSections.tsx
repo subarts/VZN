@@ -1,4 +1,4 @@
-/* export async function DivisionsSections(/* metod */ body) {
+export async function DivisionsSections(/* metod */ body) {
   const metod = "divisions/storeDivisions.avSections"
   const authToken = sessionStorage.getItem("authToken")
   try {
@@ -21,4 +21,4 @@
   } catch (err) {
     alert(err)
   }
-} 
+}
