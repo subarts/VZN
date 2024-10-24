@@ -1,5 +1,5 @@
-export async function InfoCardsVzn(body) {
-  const metod = "stock/wsInplants/contents.loadByFilter"
+export async function nameCardsVZN(value: Array<number>) {
+  const metod = "stockobjs.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
 
   try {
@@ -12,8 +12,8 @@ export async function InfoCardsVzn(body) {
       },
       body: JSON.stringify({
         flt: {
-          WsInplantCode: 0,
-        } /* body пока 0 тк других все равно не находит  !поиск карточек, в ответе нас интересует LeaveCardCode- номер карточки*/,
+					Codes: value
+        }
       }),
     })
 
@@ -21,7 +21,7 @@ export async function InfoCardsVzn(body) {
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.wsInplantContents
+    return data
   } catch (err) {
     alert(err)
   }
