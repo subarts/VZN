@@ -1,4 +1,6 @@
-export async function InfoCardsVzn(body) {
+import { InfoCardsVZNInterface } from '../types'
+
+export async function InfoCardsVzn(code: number): Promise<InfoCardsVZNInterface[] | undefined>{
   const metod = "stock/wsInplants/contents.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
 
@@ -12,13 +14,12 @@ export async function InfoCardsVzn(body) {
       },
       body: JSON.stringify({
         flt: {
-          WsInplantCode: 0,
-        } /* body пока 0 тк других все равно не находит  !поиск карточек, в ответе нас интересует LeaveCardCode- номер карточки*/,
+          WsInplantCode: code,
+        }
       }),
     })
 
     const data = await response.json()
-
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }

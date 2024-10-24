@@ -1,5 +1,7 @@
-export async function ConsignmentsVzn(body) {
-  const metod = "stock/wsInplants.loadByFilter"
+import { INameCardResult } from '../types'
+
+export async function nameCardsVZN(value: Array<number>): Promise<INameCardResult[] | undefined> {
+  const metod = "stockobjs.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
 
   try {
@@ -11,16 +13,17 @@ export async function ConsignmentsVzn(body) {
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: body,
+        flt: {
+					Codes: value
+        }
       }),
     })
 
     const data = await response.json()
-
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.wsInplants
+    return data.stockobjs
   } catch (err) {
     alert(err)
   }

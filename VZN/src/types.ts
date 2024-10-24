@@ -13,6 +13,19 @@ export type TListRequest = {
   endArrivalMoveDate: string
 }
 
+export type TDivisions = {
+  BeginDate: string,
+  Code: number,
+  DivisionParentCode: number,
+  EndDate: string,
+  Name: string,
+  Sign: string,
+  Type: number,
+  WSCode: string
+}
+
+
+
 export type TListVznPropsItem = {
   ArrivalMoveDate: string
   Code: number
@@ -48,4 +61,42 @@ export type TListVznPropsItem = {
       ]
     }
   }
+}
+
+
+export interface InfoCardsVZNInterface {
+  ArrivalCardCode: number
+  ArrivalCardType: number
+  ArrivalQty: number
+  ArticleOfExpense: number
+  Code: number
+  InplantCode: number
+  LeaveCardCode: number
+  LeaveQty: number
+  LotCode: number
+  OrderCode: number
+}
+
+export interface IDepotCards {
+  Code: number
+  DivCode: number
+  IsLotMoving: boolean
+  MeasCode: number
+  Notice: string
+  Num: string
+  Remainder: number
+  StockobjCode: number
+}
+
+export interface INameCardResult {
+  BaseCode: number
+  BaseType: number
+  Code: number
+  Description: string
+  KoType: number
+  MeasCode: number
+  Name: string
+  NomNum: string
+  Notice: string
+  Sign: string
 }
