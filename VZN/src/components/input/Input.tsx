@@ -1,14 +1,14 @@
 import styles from "../input/Input.module.css"
 
-interface InputProps{
-  placeHolder?: string;
-  legendText: string;
-  required?: boolean;
-  type: string;
-  className?: string;
-  disabled?: boolean;
-  value?: string;
-  onChange?: (event: any) => void;
+interface InputProps {
+  placeHolder?: string
+  legendText: string
+  required?: boolean
+  type?: string
+  className?: string
+  disabled?: boolean
+  value?: string
+  onChange?: (event: any) => void
 }
 
 export default function Input({
@@ -33,6 +33,7 @@ export default function Input({
         placeholder={placeHolder}
         value={value}
         onChange={onChange}
+        required={required}
         {...props}
       />
     </fieldset>

@@ -54,4 +54,8 @@ export const Router = createBrowserRouter([
     path: "/ListReceipt/:numberUnicCodeVzn",
     element: <InfoAboutVZN />,
   },
+  {
+    path: "/create/:numberUnicCodeVzn",
+    element: <InfoAboutVZN />,
+  },
 ])
