@@ -1,6 +1,5 @@
 import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
-import TListVznPropsItem from "../types"
 
 export const useStore = create(
   persist(

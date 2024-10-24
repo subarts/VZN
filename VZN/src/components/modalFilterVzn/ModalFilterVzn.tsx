@@ -1,5 +1,5 @@
 import Button from "../button/Button"
-import { DateOfAcceptance } from "../dateOfAcceptance/DateOfAcceptance"
+import { DateOfAcceptance } from "../folderSelect.module.css/DateOfAcceptance"
 import Input from "../input/Input"
 import style from "./modalFilterVzn.module.css"
 import { TListRequest } from "../../types"
@@ -8,7 +8,7 @@ import { ConsignmentsVzn } from "../../api/ConsignmentsVzn"
 import { TListVznPropsItem } from "../../types"
 
 import { useStore } from "../../store/Store"
-import FolderInput from "../folderInput/FolderInput"
+import FolderInput from "../folderSelect/FolderSelect"
 
 type TFuncVoid = {
   filterListVzn: (e: Array<TListVznPropsItem>) => void
