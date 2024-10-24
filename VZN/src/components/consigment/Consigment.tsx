@@ -3,10 +3,15 @@ import { Link } from "react-router-dom"
 import { TListVznPropsItem } from "../../types"
 import { useStore } from "../../store/Store"
 
+type listVznProps = {
+  listVzn: TListVznPropsItem[]
+}
 /* запрос участков подразделений */
-const Consigment: React.FC = () => {
-  const { listVzn, findDivision } = useStore()
-  
+const Consigment: React.FC<listVznProps> = ({ listVzn }) => {
+  const isObject: TListVznPropsItem[] = listVzn ? listVzn : []
+  const isEpmtyObj: boolean = Object.entries(isObject).length > 0
+  const { findDivison } = useStore((state) => state)
+
   return (
     <div className={styles.consigmentList}>
       {listVzn.length > 0 ? (

@@ -20,7 +20,9 @@ export const useStore = create<IUseStore>()(
       addVzn: (vzn) => set({ listVzn: vzn }),
       divisions: [],
       addDivisions: (divisions) => set({ divisions }),
-      findDivision: (division) => {
+
+      findDivison: (division) => {
+
         const result = get().divisions.filter((el) => el.Code === division)
         return result[0].Name
       },

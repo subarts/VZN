@@ -8,7 +8,7 @@ import { ConsignmentsVzn } from "../../api/ConsignmentsVzn"
 import { TListVznPropsItem } from "../../types"
 
 import { useStore } from "../../store/Store"
-import FolderInput from "../folderInput/FolderInput"
+import FolderInput from "../folderSelect/FolderSelect"
 
 type TFuncVoid = {
   filterListVzn: (e: Array<TListVznPropsItem>) => void
