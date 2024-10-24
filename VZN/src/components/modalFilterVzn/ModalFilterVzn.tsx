@@ -1,5 +1,5 @@
 import Button from "../button/Button"
-import { DateOfAcceptance } from "../folderSelect.module.css/DateOfAcceptance"
+import { DateOfAcceptance } from "../dateOfAcceptance/DateOfAcceptance"
 import Input from "../input/Input"
 import style from "./modalFilterVzn.module.css"
 import { TListRequest } from "../../types"
