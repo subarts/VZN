@@ -97,6 +97,6 @@ export interface INameCardResult {
   Notice: string
   Sign: string
 }
-export type TIconProps = {
-  props?: React.SVGProps<SVGSVGElement>
+export type TIconProps = React.SVGProps<SVGSVGElement> & {
+  onClick?: () => void
 }
