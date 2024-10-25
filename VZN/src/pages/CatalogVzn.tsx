@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Button from "../components/button/Button"
 import Consigment from "../components/consigment/Consigment"
 import Footer from "../components/footer/Footer"
@@ -8,12 +8,8 @@ import OptionIcon from "../components/icons/OptionIcon"
 import PLusIcon from "../components/icons/PlusIcon"
 import ModalFilterVzn from "../components/modalFilterVzn/ModalFilterVzn"
 import ModalCreateVZN from "../components/modalCreateVZN/ModalCreateVZN"
-
 import { THeaderStyle } from "../types"
-import { ConsignmentsVzn } from "../api/ConsignmentsVzn"
-import { TListVznPropsItem } from "../types"
-import { TListRequest } from "../types"
-import { useStore } from "../store/Store"
+
 type TVisibleModal = "create" | "search"
 
 const CatalogVzn = () => {

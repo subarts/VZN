@@ -4,13 +4,6 @@ import Footer from "../../components/footer/Footer"
 import { Header } from "../../components/header/Header"
 import Input from "../../components/input/Input"
 import { THeaderStyle } from "../../types"
-/* type Division = {
-  divisions: Array<{
-    code: number
-    name: string
-  }>
-  error: object
-} */
 
 const FilterReceipt: React.FC = () => {
   const headerProps: THeaderStyle = { style: ["border", "backgroundColor"] }

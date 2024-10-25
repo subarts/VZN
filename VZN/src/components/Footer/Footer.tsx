@@ -1,7 +1,4 @@
 import styles from "./Footer.module.css"
-
-import menu from "../../assets/icons/burgerBlack.svg"
-import scaner from "../../assets/icons/scanDefault.svg"
 import { Link, useNavigate } from "react-router-dom"
 import ArrowBack from "../icons/ArrowBack"
 import ScannerIcon from "../icons/ScannerIcon"
