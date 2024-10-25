@@ -8,6 +8,7 @@ import OptionIcon from "../components/icons/OptionIcon"
 import PLusIcon from "../components/icons/PlusIcon"
 import ModalFilterVzn from "../components/modalFilterVzn/ModalFilterVzn"
 import ModalCreateVZN from "../components/modalCreateVZN/ModalCreateVZN"
+
 import { THeaderStyle } from "../types"
 import { ConsignmentsVzn } from "../api/ConsignmentsVzn"
 import { TListVznPropsItem } from "../types"
@@ -20,34 +21,9 @@ const CatalogVzn = () => {
     "search"
   )
 
-  // const [bodyRequest, setBodyRequest] = useState<TListRequest>({
-  //   Num: "500223%",
-  //   Sender: "",
-  //   Receiver: "",
-  //   StartArrivalMoveDate: "",
-  //   endArrivalMoveDate: "",
-  // })
-
-  // const [listVzn, setListVzn] = useState<Array<TListVznPropsItem>>([])
-  /* в стор */
-  // const { addVzn } = useStore((state) => state)
-  // useEffect(() => {
-  //   const requestVzn = async (): Promise<void> => {
-  //     const result = await ConsignmentsVzn(bodyRequest)
-  //     console.log(result)
-  //     setListVzn(result)
-  //     addVzn(result)
-  //   }
-  //   requestVzn()
-  // }, [])
-  // function filterListVzn(list: Array<TListVznPropsItem>): void {
-  //   setListVzn(list)
-  //   setVisibleModalType("")
-  // }
-
   const isConsignment: boolean = window.location.pathname.includes(
     "/ListConsignment"
-  ) /* флаг на расход приход */
+  )
 
   const headerProps: THeaderStyle = visibleModalType
     ? { style: ["border", "justifyStartH1"] }

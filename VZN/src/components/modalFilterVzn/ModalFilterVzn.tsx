@@ -10,7 +10,7 @@ import { TListVznPropsItem } from "../../types"
 import { useStore } from "../../store/Store"
 import FolderInput from "../folderInput/FolderInput"
 
-type TVisibleModal = "create" | "search"
+type TVisibleModal = "create" | "search" 
 interface IModalFilterVznProps {
   setVisibleModalType: React.Dispatch<React.SetStateAction<"" | TVisibleModal>>
 }
