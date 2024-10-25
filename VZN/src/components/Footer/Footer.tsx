@@ -1,6 +1,6 @@
 import styles from "./Footer.module.css"
 import { Link, useNavigate } from "react-router-dom"
-import ArrowBack from "../icons/ArrowBack"
+import ArrowBackIcon from "../icons/ArrowBackIcon"
 import ScannerIcon from "../icons/ScannerIcon"
 import MenuIcon from "../icons/MenuIcon"
 
@@ -22,7 +22,7 @@ export default function Footer() {
           </Link>
         </li>
         <li className={styles.item} onClick={() => navigate(-1)}>
-          <ArrowBack className="" />
+          <ArrowBackIcon />
           <p className={styles.text}>Назад</p>
         </li>
       </ul>

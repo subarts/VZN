@@ -1,5 +1,5 @@
-export async function DivisionsSections(/* metod */ body) {
-  const metod = "divisions/storeDivisions.avSections"
+export async function boStatus(value: number) {
+  const metod = "bo/state.loadListByFilter"
   const authToken = sessionStorage.getItem("authToken")
   try {
     const response = await fetch(`http://92.55.15.91:8225/${metod}`, {
@@ -10,14 +10,17 @@ export async function DivisionsSections(/* metod */ body) {
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        params: body,
+        flt: {
+          Codes: [value],
+        },
       }),
     })
+
     const data = await response.json()
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.sections
+    return data.listData
   } catch (err) {
     alert(err)
   }

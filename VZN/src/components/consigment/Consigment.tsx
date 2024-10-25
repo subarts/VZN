@@ -6,7 +6,7 @@ import { useStore } from "../../store/Store"
 /* запрос участков подразделений */
 const Consigment: React.FC = () => {
   const { listVzn, findDivision } = useStore()
-  
+
   return (
     <div className={styles.consigmentList}>
       {listVzn.length > 0 ? (
@@ -35,7 +35,7 @@ const Consigment: React.FC = () => {
           )
         })
       ) : (
-        <p>Список пуст...</p>
+        <p className={styles.epmty}>Список пуст...</p>
       )}
     </div>
   )

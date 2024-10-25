@@ -7,7 +7,7 @@ import { useState } from "react"
 import { ConsignmentsVzn } from "../../api/consignmentsVzn"
 
 import { useStore } from "../../store/Store"
-import FolderInput from "../folderInput/FolderInput"
+import FolderInput from "../folderSelect/FolderSelect"
 
 type TVisibleModal = "create" | "search"
 interface IModalFilterVznProps {

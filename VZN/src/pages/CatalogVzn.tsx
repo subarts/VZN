@@ -36,7 +36,7 @@ const CatalogVzn = () => {
             className={"smallButtonText"}
           >
             <>
-              <OptionIcon className="" />
+              <OptionIcon />
               Поиск
             </>
           </Button>
@@ -56,7 +56,7 @@ const CatalogVzn = () => {
       </h1>
     ) : (
       <h1>
-        <CloseIcon className="" onClick={() => setVisibleModalType("")} />
+        <CloseIcon onClick={() => setVisibleModalType("")} />
         {visibleModalType === "search"
           ? "Фильтр ВЗН УП"
           : "Создание ВЗН (Расход)"}

@@ -5,7 +5,7 @@ import styles from "../mainScan/scan.module.css"
 import Select from "../../select/Select"
 
 export const Scan = () => {
-  const [inputValue, setInputValue] = useState("")
+  const [inputValue, setInputValue] = useState<string>("")
   const isButtonDisabled = inputValue.length < 10
 
   const handleInputChange = (e: {
@@ -13,6 +13,13 @@ export const Scan = () => {
   }) => {
     setInputValue(e.target.value)
   }
+
+  const fetchData = async () => {
+    const data = await BoTypes()
+    console.log(data)
+  }
+
+  fetchData()
 
   return (
     <main className={styles.main}>
@@ -25,6 +32,9 @@ export const Scan = () => {
         type="text"
         value={inputValue}
         onChange={handleInputChange}
+        required={false}
+        className={""}
+        disabled={false}
       />
       <Select
         legend="Тип объекта БО"

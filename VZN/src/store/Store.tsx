@@ -1,6 +1,7 @@
 import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
 import { TListVznPropsItem } from "../types"
+
 import { TDivisions } from '../types'
 import { ViewingTheComposition } from '../components/modalViewingTheComposition/mainTheComposition/ViewingComposition'
 import { boOperations } from '../api/boOperations'
@@ -12,6 +13,7 @@ type TCards = {
   Sign?: string
   Num?: string
 }
+
 
 interface IUseStore {
   listVzn: Array<TListVznPropsItem>
@@ -58,5 +60,3 @@ export const useStore = create<IUseStore>()(
     }
   )
 )
-
-
