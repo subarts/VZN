@@ -2,20 +2,19 @@ import { FC, useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { CardsVzn } from "../../api/CardsVzn"
 import { InfoCardsVzn } from "../../api/InfoCardsVzn"
-import { nameCardsVZN } from '../../api/nameCardsVZN'
+import { nameCardsVZN } from "../../api/nameCardsVZN"
 import { useStore } from "../../store/Store"
-import { InfoCardsVZNInterface, TListVznPropsItem } from '../../types'
-import { IDepotCards } from '../../types'
-import { INameCardResult } from '../../types'
+import { InfoCardsVZNInterface, TListVznPropsItem } from "../../types"
+import { IDepotCards } from "../../types"
+import { INameCardResult } from "../../types"
 import Button from "../button/Button"
 import style from "./aboutVZN.module.css"
-
-
+import { boStatus } from "../../api/boStatus"
 
 type TRequestVzn = {
   infoCard?: InfoCardsVZNInterface[]
   nameCard?: INameCardResult[]
-  cardObjects: {num: string, stockObjCode: number}[]
+  cardObjects: { num: string; stockObjCode: number }[]
 }
 
 type TCards = {
@@ -26,58 +25,64 @@ type TCards = {
   Num?: string
 }
 
-type TVisibleModal = 'aboutVZN' | 'viewingComposition' | 'confirmOperation'
+type TVisibleModal = "aboutVZN" | "viewingComposition" | "confirmOperation"
 
 interface IAboutVZNProps {
   setVisibleModalType: React.Dispatch<React.SetStateAction<TVisibleModal>>
 }
 
 export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
-  const { listVzn, addViewingComposition, findDivision, setPage} = useStore((state) => state)
-  const { numberUnicCodeVzn } = useParams<{numberUnicCodeVzn: string}>()
+  const { listVzn, addViewingComposition, findDivision, setPage } = useStore(
+    (state) => state
+  )
+  const { numberUnicCodeVzn } = useParams<{ numberUnicCodeVzn: string }>()
   const [cards, setCards] = useState<TCards[]>([])
-
-  const itemVzn = listVzn.filter(
-    (el) => {
-      if (!numberUnicCodeVzn) return
-      if (el.Code === +numberUnicCodeVzn)
-        return el
-      return null
-    }
-  )[0]
-
+  const [boStatusNow, setBoStatusNow] = useState<string>("")
+  const itemVzn = listVzn.filter((el) => {
+    if (!numberUnicCodeVzn) return
+    if (el.Code === +numberUnicCodeVzn) return el
+    return null
+  })[0]
 
   const requestVzn = async (): Promise<TRequestVzn | undefined> => {
     if (!numberUnicCodeVzn) return
     try {
-      const data: InfoCardsVZNInterface[] | undefined = await InfoCardsVzn(+numberUnicCodeVzn)
+      const data: InfoCardsVZNInterface[] | undefined = await InfoCardsVzn(
+        +numberUnicCodeVzn
+      )
       if (!data) return
-      console.log(data)
-      const leaveCardCodes: Array<number> = data.map(item => item.LeaveCardCode)
-      const depotCards: IDepotCards[] | undefined = await CardsVzn(leaveCardCodes) 
-    
-      const cardObjects: Array<{num: string, stockObjCode: number}> | undefined = depotCards?.map(item => ({
+      const leaveCardCodes: Array<number> = data.map(
+        (item) => item.LeaveCardCode
+      )
+      const depotCards: IDepotCards[] | undefined = await CardsVzn(
+        leaveCardCodes
+      )
+
+      const cardObjects:
+        | Array<{ num: string; stockObjCode: number }>
+        | undefined = depotCards?.map((item) => ({
         num: item.Num,
         stockObjCode: item.StockobjCode,
       }))
 
-
       if (!cardObjects) return
-      const nameCard: INameCardResult[] | undefined = await nameCardsVZN(cardObjects.map(item => item.stockObjCode))
-
+      const nameCard: INameCardResult[] | undefined = await nameCardsVZN(
+        cardObjects.map((item) => item.stockObjCode)
+      )
 
       return {
         infoCard: data,
         nameCard: nameCard,
-        cardObjects: cardObjects
+        cardObjects: cardObjects,
       }
-    }
-    catch (e) {
+    } catch (e) {
       console.log(e)
     }
   }
+
   useEffect(() => {
     async function getData() {
+      const boStateNow = await boStatus(itemVzn.bo.State)
       const data = await requestVzn()
       const cards: Array<TCards> = []
       data?.infoCard?.forEach((item) => {
@@ -95,23 +100,22 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
       data?.cardObjects?.forEach((item, index) => {
         cards[index]["Num"] = item.num
       })
+      setBoStatusNow(boStateNow[0].ShortName)
       addViewingComposition(cards)
       setCards(cards)
     }
     getData()
   }, [])
- 
-  
   const senderName: string = findDivision(itemVzn.Sender)
   const receiverName: string = findDivision(itemVzn.Receiver)
 
   function handleClickElemList(e: React.MouseEvent<HTMLDivElement>) {
     const elements = Array.from(e.currentTarget.children)
-    if(!elements) return 
+    if (!elements) return
     const numberPage = Array.from(elements[0].children)[0].textContent
-    if(!numberPage) return
+    if (!numberPage) return
     setPage(+numberPage)
-    setVisibleModalType('viewingComposition')
+    setVisibleModalType("viewingComposition")
   }
 
   return (
@@ -126,7 +130,8 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
           {receiverName} / участок Цеха 02
         </p>
         <p>
-          <span className={style.bold}>Статус: </span>НеУтв
+          <span className={style.bold}>Статус: </span>
+          {boStatusNow}
         </p>
         <p>
           <span className={style.bold}>Дата выдачи: </span>
@@ -142,7 +147,7 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
         {cards.map((el, index) => {
           return (
             <div key={index} className={style.listSection}>
-              <span style={{display: 'none'}}>{index + 1}</span>
+              <span style={{ display: "none" }}>{index + 1}</span>
               <h4 className={style.title}>
                 {el.Sign} -- {el.Name}
               </h4>
