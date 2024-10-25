@@ -1,9 +1,10 @@
-import { SetStateAction, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import Button from '../../button/Button';
 import Input from '../../input/Input';
 import styles from '../mainScan/scan.module.css';
 import Select from '../../select/Select';
 import { BoTypes } from '../../../api/BoTypes';
+import { Link } from 'react-router-dom';
 
 export const Scan = () => {
     const [inputValue, setInputValue] = useState<string>('');
@@ -15,10 +16,12 @@ export const Scan = () => {
 
     const fetchData = async () => {
         const data = await BoTypes();
-        console.log(data)
+        console.log(data);
     };
 
-    fetchData();
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <main className={styles.main}>
@@ -39,7 +42,9 @@ export const Scan = () => {
                 className={`${styles.selectFieldset} ${styles.selectFilter} ${inputValue.length < 10 ? styles.disabledSelect : styles.selectFieldset}`}
             />
             <div className={styles.buttons}>
-                <Button disabled={isButtonDisabled} className={isButtonDisabled ? 'button:disabled' : ''} type="submit" color='Blue' size='Regular' children='Перейти' />
+                <Link to='/ListConsignment/:numberUnicCodeVzn' >
+                    <Button disabled={isButtonDisabled} className={isButtonDisabled ? 'button:disabled' : ''} type="submit" color='Blue' size='Regular' children='Перейти' />
+                </Link>
                 <Button type='submit' color='TransparentWithBorder' children='Отмена' />
             </div>
         </main>
