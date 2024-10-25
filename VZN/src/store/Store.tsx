@@ -2,9 +2,7 @@ import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
 import { TListVznPropsItem } from "../types"
 
-import { TDivisions } from '../types'
-import { ViewingTheComposition } from '../components/modalViewingTheComposition/mainTheComposition/ViewingComposition'
-import { boOperations } from '../api/boOperations'
+import { TDivisions } from "../types"
 
 type TCards = {
   ArrivalQty?: number
@@ -13,7 +11,6 @@ type TCards = {
   Sign?: string
   Num?: string
 }
-
 
 interface IUseStore {
   listVzn: Array<TListVznPropsItem>
@@ -27,7 +24,7 @@ interface IUseStore {
   findDivision: (division: number) => string
   findVzn: (code: number) => string
   addBoOperation: (boOperation: string) => void
-  setPage: (page: number) =>void
+  setPage: (page: number) => void
 }
 
 export const useStore = create<IUseStore>()(
@@ -36,14 +33,15 @@ export const useStore = create<IUseStore>()(
       listVzn: [],
       divisions: [],
       viewingComposition: [],
-      boOperation: '',
+      boOperation: "",
       page: 0,
-      
+
       addVzn: (vzn) => set({ listVzn: vzn }),
       addDivisions: (divisions) => set({ divisions }),
-      addViewingComposition: (viewingCompositions) => set({ viewingComposition: viewingCompositions }),
-      addBoOperation: (boOperation) => set({ boOperation }), 
-      setPage: (page) => set({page}),
+      addViewingComposition: (viewingCompositions) =>
+        set({ viewingComposition: viewingCompositions }),
+      addBoOperation: (boOperation) => set({ boOperation }),
+      setPage: (page) => set({ page }),
       findDivision: (division) => {
         const result = get().divisions.filter((el) => el.Code === division)
         return result[0].Name

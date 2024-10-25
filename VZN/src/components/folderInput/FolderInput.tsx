@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import styles from "./folderInput.module.css"
 import FolderInputIcon from "../icons/FolderInputIcon"
-import { Divisions } from "../../api/divisions"
+import { Divisions } from "../../api/Divisions"
 import { useStore } from "../../store/Store"
 type SelectProps = {
   legend: string
