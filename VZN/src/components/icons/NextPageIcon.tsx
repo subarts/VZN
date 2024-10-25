@@ -1,6 +1,7 @@
-import { SVGProps } from "react"
-const NextPageIcon = (props: SVGProps<SVGSVGElement>) => (
+import { TIconProps } from "../../types"
+const NextPageIcon: React.FC<TIconProps> = ({ className, props }) => (
   <svg
+    className={className}
     xmlns="http://www.w3.org/2000/svg"
     width={18}
     height={18}

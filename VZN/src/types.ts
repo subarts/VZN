@@ -14,17 +14,15 @@ export type TListRequest = {
 }
 
 export type TDivisions = {
-  BeginDate: string,
-  Code: number,
-  DivisionParentCode: number,
-  EndDate: string,
-  Name: string,
-  Sign: string,
-  Type: number,
+  BeginDate: string
+  Code: number
+  DivisionParentCode: number
+  EndDate: string
+  Name: string
+  Sign: string
+  Type: number
   WSCode: string
 }
-
-
 
 export type TListVznPropsItem = {
   ArrivalMoveDate: string
@@ -63,7 +61,6 @@ export type TListVznPropsItem = {
   }
 }
 
-
 export interface InfoCardsVZNInterface {
   ArrivalCardCode: number
   ArrivalCardType: number
@@ -99,4 +96,8 @@ export interface INameCardResult {
   NomNum: string
   Notice: string
   Sign: string
+}
+export type TIconProps = {
+  className?: string
+  props?: React.SVGProps<SVGSVGElement>
 }
