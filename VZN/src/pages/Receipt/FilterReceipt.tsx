@@ -24,8 +24,6 @@ const FilterReceipt: React.FC = () => {
   /* получение списка подразделений */
   const [list, setList] = useState<Array<{ code: string; name: "string" }>>()
   useEffect(() => {
-    /* 
-    async function Divisions(): Promise<Division[] | void> { */
     const authToken = sessionStorage.getItem("authToken")
     fetch("http://92.55.15.91:8225/divisions/storeDivisions.avDivisions", {
       method: "POST",

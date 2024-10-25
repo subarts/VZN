@@ -11,13 +11,13 @@ export default function Footer() {
       <ul className={styles.list}>
         <li className={styles.item}>
           <Link to="/menu">
-            <MenuIcon className={""} />
+            <MenuIcon />
             <p className={styles.text}>Меню</p>
           </Link>
         </li>
         <li className={styles.item}>
           <Link to="/menu/modalScan">
-            <ScannerIcon className={""} />
+            <ScannerIcon />
             <p className={styles.text}>Сканер</p>
           </Link>
         </li>

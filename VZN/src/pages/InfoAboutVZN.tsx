@@ -71,10 +71,7 @@ export const InfoAboutVZN = () => {
     return (
       <h1>
         {visibleModalType !== "aboutVZN" ? (
-          <CloseIcon
-            className=""
-            onClick={() => setVisibleModalType("aboutVZN")}
-          />
+          <CloseIcon onClick={() => setVisibleModalType("aboutVZN")} />
         ) : null}
         {visibleModalType === "aboutVZN"
           ? `ВЗН №${title} (${isConsignment ? "Расход" : "Приход"})`

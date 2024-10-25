@@ -1,15 +1,14 @@
 import { FC, useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
-import { CardsVzn } from "../../api/CardsVzn"
+import { useParams } from "react-router-dom"
+import { CardsVzn } from "../../api/cardsVzn"
 import { InfoCardsVzn } from "../../api/InfoCardsVzn"
 import { nameCardsVZN } from "../../api/nameCardsVZN"
 import { useStore } from "../../store/Store"
-import { InfoCardsVZNInterface, TListVznPropsItem } from "../../types"
+import { InfoCardsVZNInterface } from "../../types"
 import { IDepotCards } from "../../types"
 import { INameCardResult } from "../../types"
 import Button from "../button/Button"
 import style from "./aboutVZN.module.css"
-import { boStatus } from "../../api/boStatus"
 
 type TRequestVzn = {
   infoCard?: InfoCardsVZNInterface[]
@@ -37,7 +36,7 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
   )
   const { numberUnicCodeVzn } = useParams<{ numberUnicCodeVzn: string }>()
   const [cards, setCards] = useState<TCards[]>([])
-  const [boStatusNow, setBoStatusNow] = useState<string>("")
+
   const itemVzn = listVzn.filter((el) => {
     if (!numberUnicCodeVzn) return
     if (el.Code === +numberUnicCodeVzn) return el
@@ -51,6 +50,7 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
         +numberUnicCodeVzn
       )
       if (!data) return
+      console.log(data)
       const leaveCardCodes: Array<number> = data.map(
         (item) => item.LeaveCardCode
       )
@@ -79,10 +79,8 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
       console.log(e)
     }
   }
-
   useEffect(() => {
     async function getData() {
-      const boStateNow = await boStatus(itemVzn.bo.State)
       const data = await requestVzn()
       const cards: Array<TCards> = []
       data?.infoCard?.forEach((item) => {
@@ -100,12 +98,12 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
       data?.cardObjects?.forEach((item, index) => {
         cards[index]["Num"] = item.num
       })
-      setBoStatusNow(boStateNow[0].ShortName)
       addViewingComposition(cards)
       setCards(cards)
     }
     getData()
   }, [])
+
   const senderName: string = findDivision(itemVzn.Sender)
   const receiverName: string = findDivision(itemVzn.Receiver)
 
@@ -130,8 +128,7 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
           {receiverName} / участок Цеха 02
         </p>
         <p>
-          <span className={style.bold}>Статус: </span>
-          {boStatusNow}
+          <span className={style.bold}>Статус: </span>НеУтв
         </p>
         <p>
           <span className={style.bold}>Дата выдачи: </span>
