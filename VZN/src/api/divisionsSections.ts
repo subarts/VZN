@@ -1,4 +1,4 @@
-/* export async function DivisionsSections(/* metod */ body) {
+export async function divisionsSections() {
   const metod = "divisions/storeDivisions.avSections"
   const authToken = sessionStorage.getItem("authToken")
   try {
@@ -10,7 +10,7 @@
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        params: body,
+        // params:
       }),
     })
     const data = await response.json()

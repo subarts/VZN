@@ -1,5 +1,5 @@
-export async function Tmc(body) {
-  const metod = "stockobjs.loadByFilter"
+export async function consignmentsVzn(body) {
+  const metod = "stock/wsInplants.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
 
   try {
@@ -11,9 +11,7 @@ export async function Tmc(body) {
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: {
-          Codes: [body],
-        } /*карточка одна поэтому и тмц одно будет приходить */,
+        flt: body,
       }),
     })
 
@@ -22,7 +20,7 @@ export async function Tmc(body) {
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.stockobjs
+    return data.wsInplants
   } catch (err) {
     alert(err)
   }

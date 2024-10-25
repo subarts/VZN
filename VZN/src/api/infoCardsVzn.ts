@@ -1,6 +1,9 @@
-export async function Divisions(/* metod,body */) {
-  const metod = "divisions/storeDivisions.loadByFilter"
+import { InfoCardsVZNInterface } from '../types'
+
+export async function infoCardsVzn(code: number): Promise<InfoCardsVZNInterface[] | undefined>{
+  const metod = "stock/wsInplants/contents.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
+
   try {
     const response = await fetch(`http://92.55.15.91:8225/${metod}`, {
       method: "POST",
@@ -10,14 +13,17 @@ export async function Divisions(/* metod,body */) {
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: {},
+        flt: {
+          WsInplantCode: code,
+        }
       }),
     })
+
     const data = await response.json()
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.divisions
+    return data.wsInplantContents
   } catch (err) {
     alert(err)
   }

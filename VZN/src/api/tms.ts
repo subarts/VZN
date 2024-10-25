@@ -1,5 +1,5 @@
-export async function ConsignmentsVzn(body) {
-  const metod = "stock/wsInplants.loadByFilter"
+export async function tmc(body) {
+  const metod = "stockobjs.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
 
   try {
@@ -11,7 +11,9 @@ export async function ConsignmentsVzn(body) {
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: body,
+        flt: {
+          Codes: [body],
+        } /*карточка одна поэтому и тмц одно будет приходить */,
       }),
     })
 
@@ -20,7 +22,7 @@ export async function ConsignmentsVzn(body) {
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.wsInplants
+    return data.stockobjs
   } catch (err) {
     alert(err)
   }

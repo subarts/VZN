@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { CardsVzn } from "../../api/CardsVzn"
-import { InfoCardsVzn } from "../../api/InfoCardsVzn"
+import { cardsVzn } from '../../api/сardsVzn'
+import { infoCardsVzn } from '../../api/infoCardsVzn'
 import { nameCardsVZN } from '../../api/nameCardsVZN'
 import { useStore } from "../../store/Store"
 import { InfoCardsVZNInterface, TListVznPropsItem } from '../../types'
@@ -50,11 +50,11 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
   const requestVzn = async (): Promise<TRequestVzn | undefined> => {
     if (!numberUnicCodeVzn) return
     try {
-      const data: InfoCardsVZNInterface[] | undefined = await InfoCardsVzn(+numberUnicCodeVzn)
+      const data: InfoCardsVZNInterface[] | undefined = await infoCardsVzn(+numberUnicCodeVzn)
       if (!data) return
       console.log(data)
       const leaveCardCodes: Array<number> = data.map(item => item.LeaveCardCode)
-      const depotCards: IDepotCards[] | undefined = await CardsVzn(leaveCardCodes) 
+      const depotCards: IDepotCards[] | undefined = await cardsVzn(leaveCardCodes) 
     
       const cardObjects: Array<{num: string, stockObjCode: number}> | undefined = depotCards?.map(item => ({
         num: item.Num,

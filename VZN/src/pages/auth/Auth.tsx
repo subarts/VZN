@@ -1,10 +1,10 @@
-import Footer from "../../components/footer/Footer"
+import Footer from "../../components/Footer/Footer"
 import logo from "../../assets/logo/Frame (5).svg"
 import Input from "../../components/input/Input"
-import Button from "../../components/button/Button"
+import Button from "../../components/button/button"
 import style from "./Auth.module.css"
 import { useState } from "react"
-import { Authorization } from "../../api/Authorization"
+import { authorization } from '../../api/authorization'
 import { LogPass } from "../../types"
 const Auth = () => {
   const [logInform, setLogInform] = useState<LogPass>({
@@ -13,7 +13,7 @@ const Auth = () => {
   })
   function getAuthToken(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    Authorization(logInform)
+    authorization(logInform)
   }
 
   return (

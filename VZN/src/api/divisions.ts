@@ -1,10 +1,6 @@
-import { IDepotCards } from '../types'
-
-
-export async function CardsVzn(codes: Array<number>): Promise<IDepotCards[] | undefined> {
-  const metod = "stock/stockDepotcards.loadByFilter"
+export async function divisions() {
+  const metod = "divisions/storeDivisions.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
-
   try {
     const response = await fetch(`http://92.55.15.91:8225/${metod}`, {
       method: "POST",
@@ -14,15 +10,14 @@ export async function CardsVzn(codes: Array<number>): Promise<IDepotCards[] | un
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: { Codes: codes } 
+        flt: {},
       }),
     })
-
     const data = await response.json()
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.depotcards
+    return data.divisions
   } catch (err) {
     alert(err)
   }

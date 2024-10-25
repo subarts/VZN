@@ -1,7 +1,8 @@
-import { InfoCardsVZNInterface } from '../types'
+import { IDepotCards } from '../types'
 
-export async function InfoCardsVzn(code: number): Promise<InfoCardsVZNInterface[] | undefined>{
-  const metod = "stock/wsInplants/contents.loadByFilter"
+
+export async function cardsVzn(codes: Array<number>): Promise<IDepotCards[] | undefined> {
+  const metod = "stock/stockDepotcards.loadByFilter"
   const authToken = sessionStorage.getItem("authToken")
 
   try {
@@ -13,9 +14,7 @@ export async function InfoCardsVzn(code: number): Promise<InfoCardsVZNInterface[
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: {
-          WsInplantCode: code,
-        }
+        flt: { Codes: codes } 
       }),
     })
 
@@ -23,7 +22,7 @@ export async function InfoCardsVzn(code: number): Promise<InfoCardsVZNInterface[
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data.wsInplantContents
+    return data.depotcards
   } catch (err) {
     alert(err)
   }
