@@ -9,7 +9,7 @@ const Consigment: React.FC = () => {
 
   return (
     <div className={styles.consigmentList}>
-      {listVzn.length > 1 ? (
+      {listVzn.length > 0 ? (
         listVzn?.map((el: TListVznPropsItem, index: number) => {
           const senderName = findDivision(el.Sender)
           const receiverName = findDivision(el.Receiver)

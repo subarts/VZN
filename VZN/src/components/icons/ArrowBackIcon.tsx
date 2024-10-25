@@ -1,20 +1,18 @@
 import React from "react"
 import { TIconProps } from "../../types"
-const MenuIcon: React.FC<TIconProps> = (props) => (
+const ArrowBack: React.FC<TIconProps> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={25}
+    width={33}
     height={24}
     fill="none"
     {...props}
   >
     <path
       fill="#000"
-      fillRule="evenodd"
-      d="M3.333 8V6h18v2h-18Zm0 5h18v-2h-18v2Zm0 5h18v-2h-18v2Z"
-      clipRule="evenodd"
+      d="M24.667 11h-12.17l5.59-5.59L16.667 4l-8 8 8 8 1.41-1.41-5.58-5.59h12.17v-2Z"
     />
   </svg>
 )
 
-export default MenuIcon
+export default ArrowBack

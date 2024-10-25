@@ -1,0 +1,63 @@
+.main {
+	flex-grow: 1;
+	padding-inline: .5rem;
+	padding-top: 6.344rem;
+}
+.confirmText {
+	font-weight: 400;
+	font-family: robotoReg;
+	font-size: .813rem;
+	color: var(--text-primary-color);
+}
+
+
+.fieldset {
+	outline: none;
+	border: none;
+	border-top: 1px solid var(--primary-color-500);
+	border-radius: 0;
+	margin-left: 0.063rem;
+	margin-top: .25rem;
+}
+
+.legend {
+	font-family: robotoMedium;
+	font-size: .75rem;
+	color: var(--text-second-color);
+	background: transparent;
+	padding: 0 .25rem;
+}
+
+.title {
+	font-size: .813rem;
+	color: #333;
+}
+
+.sender, .taker{
+	font-weight: 400;
+	font-family: robotoReg;
+	font-size: .75rem;
+	letter-spacing: 0.04em;
+	color: #333;
+}
+
+.bold {
+	font-weight: 500;
+	font-family: robotoMedium;
+	color: #000000;
+}
+
+.btns {
+	display: flex;
+	justify-content: center;
+	gap: .625rem;
+	margin-top: .625rem;
+	font-weight: 500;
+	font-family: robotoMedium;
+	letter-spacing: .01em;
+	font-size: .875rem;
+}
+
+.btns button:last-child {
+	border: 1px solid var(--outline-border-color);
+}

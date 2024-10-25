@@ -4,7 +4,7 @@ import Input from "../../components/input/Input"
 import Button from "../../components/button/Button"
 import style from "./Auth.module.css"
 import { useState } from "react"
-import { Authorization } from "../../api/Authorization"
+import { Authorization } from "../../api/authorization"
 import { LogPass } from "../../types"
 const Auth = () => {
   const [logInform, setLogInform] = useState<LogPass>({

@@ -52,10 +52,10 @@
 	overflow: auto;
 	scrollbar-width: none;
 }
-.list>a{
-	border-bottom: 1px solid var(--outline-border-list-color);
-	padding: 0.25rem;
+.list>div{
+  border-bottom: 1px solid var(--outline-border-list-color);
+  padding: 0.25rem;
 }
-.list>a:last-child{
-	border:none
-}
+.list>div:last-child{
+  border:none
+} 

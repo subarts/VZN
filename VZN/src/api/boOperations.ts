@@ -1,5 +1,5 @@
-export async function NameCardsVZN(value: Array<number>) {
-  const metod = "stockobjs.loadByFilter"
+export async function boOperations(value: number) {
+  const metod = "bo.avOperations"
   const authToken = sessionStorage.getItem("authToken")
 
   try {
@@ -11,9 +11,7 @@ export async function NameCardsVZN(value: Array<number>) {
         AuthToken: `${authToken}`,
       },
       body: JSON.stringify({
-        flt: {
-          Codes: value,
-        },
+        boCode: value
       }),
     })
 
@@ -21,7 +19,7 @@ export async function NameCardsVZN(value: Array<number>) {
     if (data.error.Code !== 0) {
       throw new Error(data.error.String)
     }
-    return data
+    return data.operations
   } catch (err) {
     alert(err)
   }

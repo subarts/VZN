@@ -1,17 +1,7 @@
+import { Link } from "react-router-dom"
 import Button from "../button/Button"
 import style from "./modalCreateVzn.module.css"
-import Input from "../input/Input"
-import FolderSelect from "../folderSelect/FolderSelect"
-import { useState } from "react"
-import { Link } from "react-router-dom"
 
-type TNewVzn = {
-  Num: string
-  Sender: string
-  Receiver: string
-  issuer: string
-  receiving: string
-}
 const ModalCreateVZN = () => {
   const [newVzn, setnewVzn] = useState<TNewVzn>({
     Num: "",

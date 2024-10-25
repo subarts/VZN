@@ -4,13 +4,6 @@ import Footer from "../../components/footer/Footer"
 import { Header } from "../../components/header/Header"
 import Input from "../../components/input/Input"
 import { THeaderStyle } from "../../types"
-/* type Division = {
-  divisions: Array<{
-    code: number
-    name: string
-  }>
-  error: object
-} */
 
 const FilterReceipt: React.FC = () => {
   const headerProps: THeaderStyle = { style: ["border", "backgroundColor"] }
@@ -31,8 +24,6 @@ const FilterReceipt: React.FC = () => {
   /* получение списка подразделений */
   const [list, setList] = useState<Array<{ code: string; name: "string" }>>()
   useEffect(() => {
-    /* 
-    async function Divisions(): Promise<Division[] | void> { */
     const authToken = sessionStorage.getItem("authToken")
     fetch("http://92.55.15.91:8225/divisions/storeDivisions.avDivisions", {
       method: "POST",
