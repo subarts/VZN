@@ -1,7 +1,7 @@
+import React from "react"
 import { TIconProps } from "../../types"
-const NextPageIcon: React.FC<TIconProps> = ({ className, props }) => (
+const NextPageIcon: React.FC<TIconProps> = (props) => (
   <svg
-    className={className}
     xmlns="http://www.w3.org/2000/svg"
     width={18}
     height={18}

@@ -98,6 +98,5 @@ export interface INameCardResult {
   Sign: string
 }
 export type TIconProps = {
-  className?: string
   props?: React.SVGProps<SVGSVGElement>
 }

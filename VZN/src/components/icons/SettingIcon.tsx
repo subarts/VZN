@@ -1,9 +1,8 @@
 import React from "react"
 import { TIconProps } from "../../types"
 
-const SettingIcon: React.FC<TIconProps> = ({ className, ...props }) => (
+const SettingIcon: React.FC<TIconProps> = (props) => (
   <svg
-    className={className}
     xmlns="http://www.w3.org/2000/svg"
     width={24}
     height={24}
