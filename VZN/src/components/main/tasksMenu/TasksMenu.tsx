@@ -15,7 +15,7 @@ export const TasksMenu = () => {
           </li>
           <li>
             <Link to={"AccountingInProduction"}>
-              <FactoryIcon className={""} />
+              <FactoryIcon />
               <span>Учет в производстве</span>
             </Link>
           </li>

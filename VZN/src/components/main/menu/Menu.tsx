@@ -10,7 +10,7 @@ export const Menu = () => {
         <ul className={style.list}>
           <li>
             <Link to={"tasks"}>
-              <TasksIcon className={""} />
+              <TasksIcon />
               <span>Задачи</span>
             </Link>
           </li>

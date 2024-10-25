@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
-import { CardsVzn } from "../../api/CardsVzn"
+import { FC, useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { CardsVzn } from "../../api/cardsVzn"
 import { InfoCardsVzn } from "../../api/InfoCardsVzn"
-import { nameCardsVZN } from '../../api/nameCardsVZN'
+import { nameCardsVZN } from "../../api/nameCardsVZN"
 import { useStore } from "../../store/Store"
-import { InfoCardsVZNInterface } from '../../types'
-import { IDepotCards } from '../../types'
-import { INameCardResult } from '../../types'
+import { InfoCardsVZNInterface } from "../../types"
+import { IDepotCards } from "../../types"
+import { INameCardResult } from "../../types"
 import Button from "../button/Button"
 import style from "./aboutVZN.module.css"
-
-
+import { boStatus } from "../../api/boStatus"
 
 type TRequestVzn = {
   infoCard?: InfoCardsVZNInterface[]
   nameCard?: INameCardResult[]
+  cardObjects: { num: string; stockObjCode: number }[]
 }
 
 type TCards = {
@@ -22,57 +22,71 @@ type TCards = {
   LeaveQty?: number
   Name?: string
   Sign?: string
+  Num?: string
 }
 
+type TVisibleModal = "aboutVZN" | "viewingComposition" | "confirmOperation"
 
+interface IAboutVZNProps {
+  setVisibleModalType: React.Dispatch<React.SetStateAction<TVisibleModal>>
+}
 
-export const AboutVZN = () => {
-  const listVzn = useStore((state) => state.listVzn)
-  const { numberUnicCodeVzn } = useParams()
-
-  const bodyRequest = { WsInplantCode: listVzn.Num }
-  const { findDivision } = useStore((state) => state)
+export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
+  const { listVzn, addViewingComposition, findDivision, setPage } = useStore(
+    (state) => state
+  )
+  const { numberUnicCodeVzn } = useParams<{ numberUnicCodeVzn: string }>()
   const [cards, setCards] = useState<TCards[]>([])
-
-  const itemVzn = listVzn.filter(
-    (el) => {
-      if (!numberUnicCodeVzn) return
-      if (el.Code === +numberUnicCodeVzn)
-        return el
-      return null
-    }
-  )[0]
-
+  const [statusVzn, setStatusVzn] = useState<string>("")
+  const itemVzn = listVzn.filter((el) => {
+    if (!numberUnicCodeVzn) return
+    if (el.Code === +numberUnicCodeVzn) return el
+    return null
+  })[0]
 
   const requestVzn = async (): Promise<TRequestVzn | undefined> => {
     if (!numberUnicCodeVzn) return
     try {
-      const data: InfoCardsVZNInterface[] | undefined = await InfoCardsVzn(+numberUnicCodeVzn)
+      const data: InfoCardsVZNInterface[] | undefined = await InfoCardsVzn(
+        +numberUnicCodeVzn
+      )
       if (!data) return
+      console.log(data)
+      const leaveCardCodes: Array<number> = data.map(
+        (item) => item.LeaveCardCode
+      )
+      const depotCards: IDepotCards[] | undefined = await CardsVzn(
+        leaveCardCodes
+      )
 
-      const leaveCardCodes: Array<number> = data.map(item => item.LeaveCardCode)
-      const depotCards: IDepotCards[] | undefined = await CardsVzn(leaveCardCodes)
-    
-      const stockObjCodes: Array<number> | undefined = depotCards?.map(item => item.StockobjCode)
+      const cardObjects:
+        | Array<{ num: string; stockObjCode: number }>
+        | undefined = depotCards?.map((item) => ({
+        num: item.Num,
+        stockObjCode: item.StockobjCode,
+      }))
 
-      if (!stockObjCodes) return
-      const nameCard: INameCardResult[] | undefined = await nameCardsVZN(stockObjCodes)
-
+      if (!cardObjects) return
+      const nameCard: INameCardResult[] | undefined = await nameCardsVZN(
+        cardObjects.map((item) => item.stockObjCode)
+      )
 
       return {
         infoCard: data,
         nameCard: nameCard,
+        cardObjects: cardObjects,
       }
-    }
-    catch (e) {
+    } catch (e) {
       console.log(e)
     }
   }
   useEffect(() => {
     async function getData() {
+      const requestStatus = await boStatus(itemVzn.bo.State)
+      setStatusVzn(requestStatus[0].ShortName)
       const data = await requestVzn()
       const cards: Array<TCards> = []
-      console.log(data)
+      console.log(requestStatus, "requestVzn")
       data?.infoCard?.forEach((item) => {
         cards.push({
           ArrivalQty: item.ArrivalQty,
@@ -85,14 +99,28 @@ export const AboutVZN = () => {
         cards[index]["Sign"] = item.Sign
       })
 
+      data?.cardObjects?.forEach((item, index) => {
+        cards[index]["Num"] = item.num
+      })
+
+      addViewingComposition(cards)
       setCards(cards)
     }
     getData()
   }, [])
- 
-  console.log(itemVzn)
+
   const senderName: string = findDivision(itemVzn.Sender)
   const receiverName: string = findDivision(itemVzn.Receiver)
+
+  function handleClickElemList(e: React.MouseEvent<HTMLDivElement>) {
+    const elements = Array.from(e.currentTarget.children)
+    if (!elements) return
+    const numberPage = Array.from(elements[0].children)[0].textContent
+    if (!numberPage) return
+    setPage(+numberPage)
+    setVisibleModalType("viewingComposition")
+  }
+
   return (
     <main className={style.main}>
       <section className={style.info}>
@@ -105,7 +133,8 @@ export const AboutVZN = () => {
           {receiverName} / участок Цеха 02
         </p>
         <p>
-          <span className={style.bold}>Статус: </span>НеУтв
+          <span className={style.bold}>Статус: </span>
+          {statusVzn}
         </p>
         <p>
           <span className={style.bold}>Дата выдачи: </span>
@@ -117,10 +146,11 @@ export const AboutVZN = () => {
           <Button size="Small">Создать</Button>
         </div>
       </section>
-      <div className={style.list}>
+      <div className={style.list} onClick={handleClickElemList}>
         {cards.map((el, index) => {
           return (
-            <Link to={""} key={index} className={style.listSection}>
+            <div key={index} className={style.listSection}>
+              <span style={{ display: "none" }}>{index + 1}</span>
               <h4 className={style.title}>
                 {el.Sign} -- {el.Name}
               </h4>
@@ -132,12 +162,8 @@ export const AboutVZN = () => {
                   <span> Принято : </span>
                   {el.ArrivalQty}
                 </li>
-                <li>
-                  {/* <span>Дата выдачи: </span> */}
-                  {/* только для расхода, в приходе скрыть */}
-                </li>
               </ul>
-            </Link>
+            </div>
           )
         })}
       </div>

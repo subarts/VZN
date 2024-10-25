@@ -1,3 +1,4 @@
+
 import { SetStateAction, useEffect, useState } from 'react';
 import Button from '../../button/Button';
 import Input from '../../input/Input';
@@ -7,12 +8,15 @@ import { BoTypes } from '../../../api/BoTypes';
 import { Link } from 'react-router-dom';
 
 export const Scan = () => {
-    const [inputValue, setInputValue] = useState<string>('');
-    const isButtonDisabled = inputValue.length < 10;
+  const [inputValue, setInputValue] = useState<string>("")
+  const isButtonDisabled = inputValue.length < 10
 
-    const handleInputChange = (e: { target: { value: SetStateAction<string>; }; }) => {
-        setInputValue(e.target.value);
-    };
+  const handleInputChange = (e: {
+    target: { value: SetStateAction<string> }
+  }) => {
+    setInputValue(e.target.value)
+  }
+
 
     const fetchData = async () => {
         const data = await BoTypes();
