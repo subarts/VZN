@@ -9,6 +9,7 @@ import { IDepotCards } from "../../types"
 import { INameCardResult } from "../../types"
 import Button from "../button/Button"
 import style from "./aboutVZN.module.css"
+import { boStatus } from "../../api/boStatus"
 
 type TRequestVzn = {
   infoCard?: InfoCardsVZNInterface[]
@@ -36,7 +37,7 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
   )
   const { numberUnicCodeVzn } = useParams<{ numberUnicCodeVzn: string }>()
   const [cards, setCards] = useState<TCards[]>([])
-
+  const [statusVzn, setStatusVzn] = useState<string>("")
   const itemVzn = listVzn.filter((el) => {
     if (!numberUnicCodeVzn) return
     if (el.Code === +numberUnicCodeVzn) return el
@@ -81,8 +82,11 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
   }
   useEffect(() => {
     async function getData() {
+      const requestStatus = await boStatus(itemVzn.bo.State)
+      setStatusVzn(requestStatus[0].ShortName)
       const data = await requestVzn()
       const cards: Array<TCards> = []
+      console.log(requestStatus, "requestVzn")
       data?.infoCard?.forEach((item) => {
         cards.push({
           ArrivalQty: item.ArrivalQty,
@@ -98,6 +102,7 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
       data?.cardObjects?.forEach((item, index) => {
         cards[index]["Num"] = item.num
       })
+
       addViewingComposition(cards)
       setCards(cards)
     }
@@ -128,7 +133,8 @@ export const AboutVZN: FC<IAboutVZNProps> = ({ setVisibleModalType }) => {
           {receiverName} / участок Цеха 02
         </p>
         <p>
-          <span className={style.bold}>Статус: </span>НеУтв
+          <span className={style.bold}>Статус: </span>
+          {statusVzn}
         </p>
         <p>
           <span className={style.bold}>Дата выдачи: </span>
