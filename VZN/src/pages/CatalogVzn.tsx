@@ -8,6 +8,7 @@ import OptionIcon from "../components/icons/OptionIcon"
 import PLusIcon from "../components/icons/PlusIcon"
 import ModalFilterVzn from "../components/modalFilterVzn/ModalFilterVzn"
 import ModalCreateVZN from "../components/modalCreateVZN/ModalCreateVZN"
+
 import { THeaderStyle } from "../types"
 
 type TVisibleModal = "create" | "search"
@@ -19,7 +20,7 @@ const CatalogVzn = () => {
 
   const isConsignment: boolean = window.location.pathname.includes(
     "/ListConsignment"
-  ) /* флаг на расход приход */
+  )
 
   const headerProps: THeaderStyle = visibleModalType
     ? { style: ["border", "justifyStartH1"] }
