@@ -4,12 +4,12 @@ import Input from "../input/Input"
 import style from "./modalFilterVzn.module.css"
 import { TListRequest } from "../../types"
 import { useState } from "react"
-import { ConsignmentsVzn } from "../../api/ConsignmentsVzn"
+import { ConsignmentsVzn } from "../../api/consignmentsVzn"
 
 import { useStore } from "../../store/Store"
 import FolderInput from "../folderSelect/FolderSelect"
 
-type TVisibleModal = "create" | "search" 
+type TVisibleModal = "create" | "search"
 interface IModalFilterVznProps {
   setVisibleModalType: React.Dispatch<React.SetStateAction<"" | TVisibleModal>>
 }

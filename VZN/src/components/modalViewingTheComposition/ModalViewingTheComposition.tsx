@@ -2,6 +2,7 @@ import React from "react"
 import Footer from "../footer/Footer"
 import { Header } from "../header/Header"
 import { ViewingTheComposition } from "./mainTheComposition/ViewingComposition"
+
 import { THeaderStyle } from "../../types"
 const ModalViewingTheComposition = () => {
   const headerProps: THeaderStyle = { style: ["border", "backgroundColor"] }

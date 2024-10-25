@@ -8,7 +8,6 @@ import OptionIcon from "../components/icons/OptionIcon"
 import PLusIcon from "../components/icons/PlusIcon"
 import ModalFilterVzn from "../components/modalFilterVzn/ModalFilterVzn"
 import ModalCreateVZN from "../components/modalCreateVZN/ModalCreateVZN"
-
 import { THeaderStyle } from "../types"
 
 type TVisibleModal = "create" | "search"
