@@ -6,6 +6,7 @@ import { useStore } from "../../store/Store"
 /* запрос участков подразделений */
 const Consigment: React.FC = () => {
   const { listVzn, findDivision } = useStore()
+  console.log(listVzn)
   
   return (
     <div className={styles.consigmentList}>

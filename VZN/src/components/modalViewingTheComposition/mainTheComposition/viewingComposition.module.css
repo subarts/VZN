@@ -27,6 +27,7 @@
 
 .infoFields  fieldset {
 	border-color: var(--outline-disabled-color);
+	margin: 0;
 }
 
 .infoFields fieldset > legend {
