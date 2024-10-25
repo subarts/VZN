@@ -1,12 +1,8 @@
 import React, { FC } from "react"
-import { ReactSVG } from "react-svg"
-import nextPageIcon from "../../assets/icons/nextPage.svg"
-import prevPageIcon from "../../assets/icons/prevPage.svg"
 import style from "./pagination.module.css"
 import PrevPageIcon from "../icons/PrevPageIcon"
 import NextPageIcon from "../icons/NextPageIcon"
-PrevPageIcon
-NextPageIcon
+
 interface IPaginationProps {
   lastPage: number
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>

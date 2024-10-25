@@ -5,17 +5,18 @@ import style from "./modalFilterVzn.module.css"
 import { TListRequest } from "../../types"
 import { useState } from "react"
 import { ConsignmentsVzn } from "../../api/ConsignmentsVzn"
-import { TListVznPropsItem } from "../../types"
 
 import { useStore } from "../../store/Store"
 import FolderInput from "../folderSelect/FolderSelect"
 
-type TVisibleModal = "create" | "search"
+type TVisibleModal = "create" | "search" 
 interface IModalFilterVznProps {
   setVisibleModalType: React.Dispatch<React.SetStateAction<"" | TVisibleModal>>
 }
 
-const ModalFilterVzn: React.FC<IModalFilterVznProps> = ({setVisibleModalType}) => {
+const ModalFilterVzn: React.FC<IModalFilterVznProps> = ({
+  setVisibleModalType,
+}) => {
   const [bodyRequest, setBodyRequest] = useState<TListRequest>({
     Num: "50022%",
     Sender: "",
@@ -64,10 +65,13 @@ const ModalFilterVzn: React.FC<IModalFilterVznProps> = ({setVisibleModalType}) =
         <DateOfAcceptance addDates={addDates} />
       </div>
       <div className="listButton">
-        <Button size={"Regular"} onClick={() => {
-          requestVzn()
-          setVisibleModalType('')
-        }}>
+        <Button
+          size={"Regular"}
+          onClick={() => {
+            requestVzn()
+            setVisibleModalType("")
+          }}
+        >
           Поиск
         </Button>
         <Button shape={"Round"} color={"TransparentWithBorder"}>
