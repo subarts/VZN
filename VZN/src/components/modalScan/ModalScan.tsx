@@ -11,12 +11,12 @@ const ModalScan = () => {
 
   function headerRenderProps(): React.ReactNode {
     return (
-      <div className={styles.header}>
-        <Link to='/menu'>
-          <CloseIcon className='' />
+      <h1>
+        <Link to="/menu">
+          <CloseIcon />
         </Link>
-        <h1>Сканировать номер объекта</h1>
-      </div>
+        Сканировать номер объекта
+      </h1>
     )
   }
 
