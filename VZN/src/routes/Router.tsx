@@ -8,6 +8,11 @@ import ModalViewingTheComposition from "../components/modalViewingTheComposition
 import CatalogVzn from "../pages/CatalogVzn.tsx"
 import { InfoAboutVZN } from "../pages/InfoAboutVZN.tsx"
 import ModalScan from "../components/modalScan/ModalScan.tsx"
+import { ProtectedRoute } from "../utils/protectedRoute.tsx"
+
+const isUserAuthorized = () => {
+  return !!sessionStorage.getItem("authToken")
+};
 
 export const Router = createBrowserRouter([
   {
@@ -16,46 +21,90 @@ export const Router = createBrowserRouter([
   },
   {
     path: "/menu",
-    element: <Home />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <Home />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "menu/settings",
-    element: <Settings />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <Settings />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "/menu/tasks",
-    element: <Tasks />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <Tasks />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "menu/tasks/AccountingInProduction",
-    element: <AccountingInProduction />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <AccountingInProduction />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "menu/ModalViewingTheComposition",
-    element: <ModalViewingTheComposition />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <ModalViewingTheComposition />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "/menu/modalScan",
-    element: <ModalScan />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <ModalScan />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "/ListReceipt",
-    element: <CatalogVzn />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <CatalogVzn />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "/ListConsignment",
-    element: <CatalogVzn />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <CatalogVzn />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "/ListConsignment/:numberUnicCodeVzn",
-    element: <InfoAboutVZN />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <InfoAboutVZN />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "/ListReceipt/:numberUnicCodeVzn",
-    element: <InfoAboutVZN />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <InfoAboutVZN />
+      </ProtectedRoute>
+  ),
   },
   {
     path: "/create/:numberUnicCodeVzn",
-    element: <InfoAboutVZN />,
+    element: (
+      <ProtectedRoute isAllowed={isUserAuthorized()} redirectPath="/">
+          <InfoAboutVZN />
+      </ProtectedRoute>
+  ),
   },
 ])
