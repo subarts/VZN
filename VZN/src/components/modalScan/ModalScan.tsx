@@ -3,7 +3,7 @@ import Footer from "../footer/Footer"
 import { Header } from "../header/Header"
 import CloseIcon from "../icons/CloseIcon"
 import { Scan } from "./mainScan/Scan"
-import styles from "../modalScan/modalScan.module.css"
+import styles from '../modalScan/modalScan.module.css'
 import { Link } from "react-router-dom"
 
 const ModalScan = () => {
@@ -11,14 +11,15 @@ const ModalScan = () => {
 
   function headerRenderProps(): React.ReactNode {
     return (
-      <h1 className={styles.header}>
+      <h1>
         <Link to="/menu">
-          <CloseIcon className="" />
+          <CloseIcon />
         </Link>
         Сканировать номер объекта
       </h1>
     )
   }
+
   return (
     <>
       <Header render={() => headerRenderProps()} headerProps={headerProps} />
